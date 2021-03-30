@@ -18,3 +18,14 @@
 </a>
 
 <a href="https://www.notion.so/getobserve/Directory-8afb963bf72040deb6ed24cc8a6c11da">Directory</a>
+
+<h1>Google Resources</h1>
+
+<a href="https://drive.google.com/drive/folders/1OvrU2azk3AWVGlP_93n3XDBpFKl6iSm8?usp=sharing">Branding</a>
+<a href="https://drive.google.com/drive/folders/1tQI3CR2wyXt4cIbMU5VDo6NICp5ouJbj?usp=sharing">Business</a>
+<a href="https://drive.google.com/drive/folders/15ATO_GpSWprf5NvALQQmElsOxGLWwN5h?usp=sharing">Development</a>
+<a href="https://drive.google.com/drive/folders/1yyn-RFvEsRbzyR5VhU1i5gJ0BQWzidlT?usp=sharing">Incubators</a>
+<a href="https://drive.google.com/drive/folders/1AN_EYlWXds6x3UmxlUF0Eg_glJ-uaOoE?usp=sharing">Marketing</a>
+<a href="https://drive.google.com/drive/folders/1AN_EYlWXds6x3UmxlUF0Eg_glJ-uaOoE?usp=sharing">Pitches</a>
+<a href="https://drive.google.com/drive/folders/1AN_EYlWXds6x3UmxlUF0Eg_glJ-uaOoE?usp=sharing">Research</a>
+<a href="https://drive.google.com/drive/folders/14KeXgXE0hybkwYyEQNmTJ1Ilv7KmFh6s?usp=sharing">Resources</a>
