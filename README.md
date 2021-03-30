@@ -1,3 +1,5 @@
+<h1>Notion Resources</h1>
+
 <a href="https://www.notion.so/getobserve/Mission-Vision-Values-edf670f0fdda41b4b429be66c352a213">Mission, Vision, Values</a>
 
 <a href="https://www.notion.so/getobserve/Project-Management-29cb3a14fcdb401db2a94528017165f9">Project Management</a>
