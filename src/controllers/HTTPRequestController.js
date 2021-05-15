@@ -1,4 +1,4 @@
-import "whatwg-fetch";
+import fetch from "node-fetch";
 
 const httpRequestHandler = async (endpoint = "", options) => {
   if (endpoint.length < 1) throw new Error("[ERROR] endpoint is required");
