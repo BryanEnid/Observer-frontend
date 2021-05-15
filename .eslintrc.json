@@ -16,6 +16,7 @@
   "rules": {
     "object-curly-newline": "off",
     "no-restricted-syntax": "off",
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "consistent-return": "off"
   }
 }
