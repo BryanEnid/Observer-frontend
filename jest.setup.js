@@ -29,3 +29,25 @@
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
+
+// class MockLocalStorage {
+//   getItem(key) {
+//     return this[key] || null;
+//   }
+
+//   setItem(key, value) {
+//     this[key] = value.toString();
+//   }
+
+//   removeItem(key) {
+//     delete this[key];
+//   }
+
+//   clear() {
+//     Object.keys(this).forEach((k) => this.removeItem(k));
+//   }
+
+//   get length() {
+//     return Object.keys(this).length;
+//   }
+// }

@@ -8,15 +8,14 @@ const httpRequestHandler = async (endpoint = '', options) => {
   const url = new URL(endpoint, baseURL);
   if (params) url.search = new URLSearchParams(params).toString();
 
-  const init = {
-    method,
-    headers,
-    body: payload ? JSON.stringify(payload) : null,
-  };
+  const init = { method, headers };
+  if (payload) init.body = JSON.stringify(payload);
 
   try {
     const data = await fetch(url, init);
-    return await data.json();
+
+    const json = await data.json();
+    return json;
   } catch (e) {
     return {
       success: false,
@@ -28,7 +27,7 @@ const httpRequestHandler = async (endpoint = '', options) => {
 export default class HTTPRequest {
   static get(endpoint) {
     return httpRequestHandler(endpoint, {
-      baseURL: this.baseURL,
+      baseURL: this.baseURL || '',
       method: 'GET',
     });
   }
