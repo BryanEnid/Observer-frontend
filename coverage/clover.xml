@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1621047095124" clover="3.2.0">
+  <project timestamp="1621047095124" name="All files">
+    <metrics statements="18" coveredstatements="15" conditionals="9" coveredconditionals="6" methods="4" coveredmethods="4" elements="31" coveredelements="25" complexity="0" loc="18" ncloc="18" packages="2" files="2" classes="2"/>
+    <package name="mobile">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="App.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/App.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="mobile.src.controllers">
+      <metrics statements="16" coveredstatements="13" conditionals="9" coveredconditionals="6" methods="3" coveredmethods="3"/>
+      <file name="HTTPRequestController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/HTTPRequestController.js">
+        <metrics statements="16" coveredstatements="13" conditionals="9" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="3" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="4" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
