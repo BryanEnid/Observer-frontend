@@ -5,6 +5,7 @@
     "eject": "expo eject",
     "test": "jest --watch",
     "test:coverage": "npm test -- --coverage --watchAll",
+    "test:pr": "npm test -- coverage --ci --silent --changedSince=Observe/development --coverageReporters='text' --coverageReporters='lcov'",
     "test:all": "npm test -- --coverage --ci --silent --watchAll=false",
     "linter": "eslint src"
   },
