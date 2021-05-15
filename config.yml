@@ -1,0 +1,8 @@
+Development:
+  mode: "Development"
+  apis:
+    pexels:
+      key: 563492ad6f91700001000001fb15f65e0bc34e60843e76e311a7b127
+
+Production:
+  mode: "Production"
