@@ -4,7 +4,7 @@
 
 <a href="https://www.notion.so/getobserve/Project-Management-29cb3a14fcdb401db2a94528017165f9">Project Management</a>
 
-<a href="https://www.notion.so/getobserve/Business-0aa2ac6c9c57421999b1a180fbfd108b">Business</a>
+<!-- <a href="https://www.notion.so/getobserve/Business-0aa2ac6c9c57421999b1a180fbfd108b">Business</a> -->
 
 <a href="https://www.notion.so/getobserve/Product-3e349e86b09f4afd901ae1cb9a0d8551">Product</a>
 
@@ -22,7 +22,7 @@
 
 <a href="https://drive.google.com/drive/folders/1OvrU2azk3AWVGlP_93n3XDBpFKl6iSm8?usp=sharing">Branding</a>
 
-<a href="https://drive.google.com/drive/folders/1tQI3CR2wyXt4cIbMU5VDo6NICp5ouJbj?usp=sharing">Business</a>
+<!-- <a href="https://drive.google.com/drive/folders/1tQI3CR2wyXt4cIbMU5VDo6NICp5ouJbj?usp=sharing">Business</a> -->
 
 <a href="https://drive.google.com/drive/folders/15ATO_GpSWprf5NvALQQmElsOxGLWwN5h?usp=sharing">Development</a>
 
