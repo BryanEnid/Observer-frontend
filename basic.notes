@@ -1,0 +1,1 @@
+"test:pr": "npm test -- coverage --ci --silent --changedSince=origin/development --coverageReporters='text' --coverageReporters='lcov'"
