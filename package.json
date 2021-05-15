@@ -11,6 +11,7 @@
     "linter:fix": "eslint src --fix"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-navigation/native": "^5.9.4",
     "@reduxjs/toolkit": "^1.5.1",
     "expo": "~41.0.1",
