@@ -1,22 +1,22 @@
-import HTTPRequestController from "./HTTPRequestController";
+import HTTPRequestController from './HTTPRequestController';
 // import { server } from "../mocks/server";
 
-describe("HTTP Request Controller", () => {
+describe('HTTP Request Controller', () => {
   // beforeAll(() => server.listen());
   // afterAll(() => server.close());
   // afterEach(() => server.resetHandlers());
 
-  it("Returns data from fake API", async () => {
-    HTTPRequestController.baseURL = "https://jsonplaceholder.typicode.com";
-    expect((await HTTPRequestController.get("/todos/1")).userId).toEqual(1);
+  it('Returns data from fake API', async () => {
+    HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';
+    expect((await HTTPRequestController.get('/todos/1')).userId).toEqual(1);
   });
 
-  it("Saves data to fake API", async () => {
-    HTTPRequestController.baseURL = "https://jsonplaceholder.typicode.com";
+  it('Saves data to fake API', async () => {
+    HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';
 
-    const data = { test: "some data" };
+    const data = { test: 'some data' };
 
-    const response = await HTTPRequestController.post("/posts", data);
+    const response = await HTTPRequestController.post('/posts', data);
 
     expect(response.test).toEqual(data.test);
   });

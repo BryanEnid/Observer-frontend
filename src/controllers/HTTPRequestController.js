@@ -1,9 +1,9 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
-const httpRequestHandler = async (endpoint = "", options) => {
-  if (endpoint.length < 1) throw new Error("[ERROR] endpoint is required");
+const httpRequestHandler = async (endpoint = '', options) => {
+  if (endpoint.length < 1) throw new Error('[ERROR] endpoint is required');
 
-  const { headers = {}, params, payload = "", method, baseURL } = options;
+  const { headers = {}, params, payload = '', method, baseURL } = options;
 
   const url = new URL(endpoint, baseURL);
   if (params) url.search = new URLSearchParams(params).toString();
@@ -18,7 +18,6 @@ const httpRequestHandler = async (endpoint = "", options) => {
     const data = await fetch(url, init);
     return await data.json();
   } catch (e) {
-    console.log("ERROR", e);
     return {
       success: false,
       message: e,
@@ -27,23 +26,21 @@ const httpRequestHandler = async (endpoint = "", options) => {
 };
 
 export default class HTTPRequest {
-  baseURL = "";
-
-  static get = (endpoint) => {
+  static get(endpoint) {
     return httpRequestHandler(endpoint, {
       baseURL: this.baseURL,
-      method: "GET",
+      method: 'GET',
     });
-  };
+  }
 
-  static post = (endpoint, payload) => {
+  static post(endpoint, payload) {
     return httpRequestHandler(endpoint, {
       baseURL: this.baseURL,
-      method: "POST",
+      method: 'POST',
       payload,
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        'Content-type': 'application/json; charset=UTF-8',
       },
     });
-  };
+  }
 }
