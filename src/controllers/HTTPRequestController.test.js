@@ -1,10 +1,12 @@
-import HTTPRequestController from './HTTPRequestController';
+import Request from './HTTPRequestController';
 
 describe('HTTP Request Controller', () => {
   it('Returns data from fake API', async () => {
-    HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';
-    expect((await HTTPRequestController.get('/todos/1')).userId).toEqual(1);
+    Request.baseURL = 'https://jsonplaceholder.typicode.com';
+    expect((await Request.get('/todos/1')).userId).toEqual(1);
   });
+
+  it('Supports parameters and queries', async () => {});
 
   // it('Saves data to fake API', async () => {
   //   HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';

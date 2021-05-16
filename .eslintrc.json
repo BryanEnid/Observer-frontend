@@ -12,13 +12,13 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "parser": "@babel/eslint-parser",
   "plugins": ["react", "@babel"],
   "rules": {
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "object-curly-newline": "off",
     "no-restricted-syntax": "off",
     "no-trailing-spaces": "off",
-    "consistent-return": "off",
-    "@babel/object-curly-spacing": "off",
-    "@babel/semi": "off"
+    "consistent-return": "off"
   }
 }
