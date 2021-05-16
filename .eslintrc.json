@@ -12,11 +12,13 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "@babel"],
   "rules": {
     "object-curly-newline": "off",
     "no-restricted-syntax": "off",
     "no-trailing-spaces": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "@babel/object-curly-spacing": "off",
+    "@babel/semi": "off"
   }
 }
