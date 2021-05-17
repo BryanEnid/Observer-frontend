@@ -1,25 +1,22 @@
-import HTTPRequestController from './HTTPRequestController';
-// import { server } from "../mocks/server";
+import Request from './HTTPRequestController';
 
 describe('HTTP Request Controller', () => {
-  // beforeAll(() => server.listen());
-  // afterAll(() => server.close());
-  // afterEach(() => server.resetHandlers());
-
   it('Returns data from fake API', async () => {
-    HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';
-    expect((await HTTPRequestController.get('/todos/1')).userId).toEqual(1);
+    Request.baseURL = 'https://jsonplaceholder.typicode.com';
+    expect((await Request.get('/todos/1')).userId).toEqual(1);
   });
 
-  it('Saves data to fake API', async () => {
-    HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';
+  it('Supports parameters and queries', async () => {});
 
-    const data = { test: 'some data' };
+  // it('Saves data to fake API', async () => {
+  //   HTTPRequestController.baseURL = 'https://jsonplaceholder.typicode.com';
 
-    const response = await HTTPRequestController.post('/posts', data);
+  //   const data = { test: 'some data' };
 
-    expect(response.test).toEqual(data.test);
-  });
+  //   const response = await HTTPRequestController.post('/posts', data);
+
+  //   expect(response.test).toEqual(data.test);
+  // });
 
   // it("returns data from bullhorn API", async () => {
   //   HTTPRequestController.baseURL = "http://localhost:8080";

@@ -12,10 +12,14 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "parser": "@babel/eslint-parser",
+  "plugins": ["react", "@babel"],
   "rules": {
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "object-curly-newline": "off",
     "no-restricted-syntax": "off",
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "consistent-return": "off",
+    "react/jsx-filename-extension": [1, { "allow": "as-needed" }]
   }
 }
