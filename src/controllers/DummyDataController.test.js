@@ -8,7 +8,12 @@ describe('Dummy Data Controller', () => {
   });
 
   it('Gets random pictures', async () => {
-    const { photos } = await DummyData.getRandomPictures(amount);
+    const { photos } = await DummyData.getRandomPictures();
     expect(photos.length).toBeGreaterThan(0);
+  });
+
+  it('Gets random videos', async () => {
+    const { videos } = await DummyData.getRandomVideos();
+    expect(videos.length).toBeGreaterThan(0);
   });
 });

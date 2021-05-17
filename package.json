@@ -42,7 +42,9 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "jest-expo": "^41.0.0"
+    "identity-obj-proxy": "^3.0.0",
+    "jest-expo": "^41.0.0",
+    "react-test-renderer": "^17.0.2"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
@@ -53,10 +55,13 @@
     ],
     "preset": "jest-expo",
     "setupFiles": [
-      "./jest.setup.js"
+      "./jestSetup.js"
     ],
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     }
   },
   "private": true

@@ -19,6 +19,7 @@
     "object-curly-newline": "off",
     "no-restricted-syntax": "off",
     "no-trailing-spaces": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "react/jsx-filename-extension": [1, { "allow": "as-needed" }]
   }
 }
