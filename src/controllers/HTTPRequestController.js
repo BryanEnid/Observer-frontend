@@ -1,46 +1,39 @@
 import fetch from 'node-fetch';
 
-const httpRequestHandler = async (endpoint = '', options) => {
+const requestWrapper = async (endpoint = '', options) => {
   if (endpoint.length < 1) throw new Error('[ERROR] endpoint is required');
-
-  const { headers = {}, params, payload = '', method, baseURL } = options;
-
+  const { headers = {}, payload = '', method, baseURL } = options;
+  const init = { method, headers };
   const url = new URL(endpoint, baseURL);
-  if (params) url.search = new URLSearchParams(params).toString();
 
-  const init = {
-    method,
-    headers,
-    body: payload ? JSON.stringify(payload) : null,
-  };
+  if (payload) init.body = JSON.stringify(payload);
 
-  try {
-    const data = await fetch(url, init);
-    return await data.json();
-  } catch (e) {
-    return {
-      success: false,
-      message: e,
-    };
-  }
+  return (await fetch(url, init)).json();
 };
 
-export default class HTTPRequest {
+export default class Request {
+  baseURL = '';
+  options = {};
+  headers = {};
+
   static get(endpoint) {
-    return httpRequestHandler(endpoint, {
+    return requestWrapper(endpoint, {
       baseURL: this.baseURL,
       method: 'GET',
+      headers: this.headers,
+      ...this.options,
     });
   }
 
   static post(endpoint, payload) {
-    return httpRequestHandler(endpoint, {
+    return requestWrapper(endpoint, {
       baseURL: this.baseURL,
       method: 'POST',
       payload,
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
+      ...this.options,
     });
   }
 }
