@@ -1,8 +1,3 @@
-import { rest } from "msw";
+import { rest } from 'msw';
 
-export const handlers = [
-  rest.get("http://localhost:8080/posts", (req, res, ctx) => {
-    // Persist user's authentication in the session
-    return res(ctx.json({ success: true }));
-  }),
-];
+export default [rest.get('http://localhost:8080/posts', (req, res, ctx) => res(ctx.json({ userId: 1 })))];
