@@ -6,7 +6,7 @@
     "test": "jest --watch",
     "test:debug": "jest",
     "test:coverage": "npm test -- --coverage --watchAll",
-    "test:pr": "npm test -- coverage --ci --silent --changedSince=origin/development --coverageReporters='text' --coverageReporters='lcov'",
+    "test:pr": "npm test -- coverage --ci --silent --changedSince=origin/development",
     "test:all": "npm test -- --coverage --ci --silent --watchAll=false",
     "linter": "eslint src",
     "linter:fix": "eslint src --fix"
