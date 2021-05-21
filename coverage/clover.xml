@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1621388154177" clover="3.2.0">
-  <project timestamp="1621388154177" name="All files">
-    <metrics statements="26" coveredstatements="22" conditionals="9" coveredconditionals="5" methods="9" coveredmethods="8" elements="44" coveredelements="35" complexity="0" loc="26" ncloc="26" packages="2" files="4" classes="4"/>
+<coverage generated="1621562601583" clover="3.2.0">
+  <project timestamp="1621562601583" name="All files">
+    <metrics statements="27" coveredstatements="22" conditionals="9" coveredconditionals="5" methods="10" coveredmethods="8" elements="46" coveredelements="35" complexity="0" loc="27" ncloc="27" packages="4" files="6" classes="6"/>
     <package name="mobile">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/App.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
       </file>
     </package>
     <package name="mobile.src.controllers">
@@ -44,6 +44,19 @@
         <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="mobile.src.screen_prototypes">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/screen_prototypes/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="mobile.src.screen_prototypes.Profile">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="Profile.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/screen_prototypes/Profile/Profile.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
       </file>
     </package>
   </project>
