@@ -1,6 +1,6 @@
 import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-import { Profile as PrototypingScreen } from './src/screen_prototypes';
+import { StyleSheet, Text, View } from 'react-native';
+import { Profile } from './src/screen_prototypes';
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -12,5 +12,5 @@ import { Profile as PrototypingScreen } from './src/screen_prototypes';
 // });
 
 export default function App() {
-  return <PrototypingScreen />;
+  return <Profile />;
 }
