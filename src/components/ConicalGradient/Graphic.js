@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Svg, { Defs, Stop, G, Path, LinearGradient } from 'react-native-svg';
 import { arc } from 'd3-shape';
 import range from 'lodash/range';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 function calculateStopColor(i) {
   return [
@@ -15,49 +15,60 @@ function calculateStopColor(i) {
 
 const beginColor = [0x00, 0x00, 0x00];
 const endColor = [0xff, 0xff, 0xff];
-const noOfSeg = 2; // Number of Segments
+const noOfSeg = 4; // Number of Segments
 const LINEAR_GRADIENT_PREFIX_ID = 'gradientRing';
-const r1 = 80; // Inner width
+const r1 = 95; // Inner width
 const r2 = 100; // Outer width
 
 const point1 = 1;
 const point2 = 1;
 const point3 = 1;
-const point4 = 1;
 
 export default class CircularProgress extends Component {
   renderLinearGradients() {
-    let stopAngle1 = (2 * Math.PI) / point1;
-    let stopAngle2 = (2 * Math.PI) / point2;
-    let stopAngle3 = (2 * Math.PI) / point3;
-    let stopAngle4 = (2 * Math.PI) / point4;
-
-    let startAngle1 = 0;
-    let startAngle2 = stopAngle1;
-    let startAngle3 = stopAngle2;
-    let startAngle4 = stopAngle3;
+    let startAngle = 0;
+    let stopAngle = (2 * Math.PI) / noOfSeg;
 
     return [
       <LinearGradient
         id={LINEAR_GRADIENT_PREFIX_ID + 1}
         key={LINEAR_GRADIENT_PREFIX_ID + 1}
-        x1={r1 * Math.sin(startAngle1)}
-        y1={-r1 * Math.cos(startAngle1)}
-        x2={r1 * Math.sin(stopAngle1)}
-        y2={-r1 * Math.cos(stopAngle1)}
+        x1={r1 * Math.sin(startAngle)}
+        y1={-r1 * Math.cos(startAngle)}
+        x2={r1 * Math.sin(stopAngle)}
+        y2={-r1 * Math.cos(stopAngle)}
       >
-        <Stop offset="0" stopColor={'red'} />
-        <Stop offset="1" stopColor={'red'} />
+        <Stop offset="0" stopColor={'#C7F954'} />
       </LinearGradient>,
       <LinearGradient
         id={LINEAR_GRADIENT_PREFIX_ID + 2}
         key={LINEAR_GRADIENT_PREFIX_ID + 2}
-        x1={r1 * Math.sin(startAngle2)}
-        y1={-r1 * Math.cos(startAngle2)}
-        x2={r1 * Math.sin(stopAngle2)}
-        y2={-r1 * Math.cos(stopAngle2)}
+        x1={r1 * Math.sin(startAngle)}
+        y1={-r1 * Math.cos(startAngle)}
+        x2={r1 * Math.sin(stopAngle)}
+        y2={-r1 * Math.cos(stopAngle)}
       >
-        <Stop offset="0" stopColor={'blue'} />
+        <Stop offset="0" stopColor={'#A1F7A1'} />
+      </LinearGradient>,
+      <LinearGradient
+        id={LINEAR_GRADIENT_PREFIX_ID + 3}
+        key={LINEAR_GRADIENT_PREFIX_ID + 3}
+        x1={r1 * Math.sin(startAngle)}
+        y1={-r1 * Math.cos(startAngle)}
+        x2={r1 * Math.sin(stopAngle)}
+        y2={-r1 * Math.cos(stopAngle)}
+      >
+        <Stop offset="0" stopColor={'#14C2DD'} />
+      </LinearGradient>,
+      <LinearGradient
+        id={LINEAR_GRADIENT_PREFIX_ID + 4}
+        key={LINEAR_GRADIENT_PREFIX_ID + 4}
+        x1={r1 * Math.sin(startAngle)}
+        y1={-r1 * Math.cos(startAngle)}
+        x2={r1 * Math.sin(stopAngle)}
+        y2={-r1 * Math.cos(stopAngle)}
+      >
+        <Stop offset="0" stopColor={'#FF5C4D'} />
       </LinearGradient>,
     ];
   }
@@ -112,16 +123,15 @@ export default class CircularProgress extends Component {
     const fill = this.extractFill();
 
     return (
-      <View style={style}>
-        <Svg width={size} height={size}>
-          <Defs>{this.renderLinearGradients()}</Defs>
-          <G rotate={rotation - 90}>
-            {/* {this.renderBackgroundPath()} */}
-            {this.renderCirclePaths()}
-          </G>
-        </Svg>
-        {/* {children && children(fill)} */}
-      </View>
+      <>
+        <View style={{ position: 'absolute', top: 100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>{children}</View>
+        <View style={{ position: 'absolute', top: 100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
+          <Svg width={size} height={size}>
+            <Defs>{this.renderLinearGradients()}</Defs>
+            <G rotate={rotation - 90}>{this.renderCirclePaths()}</G>
+          </Svg>
+        </View>
+      </>
     );
   }
 }

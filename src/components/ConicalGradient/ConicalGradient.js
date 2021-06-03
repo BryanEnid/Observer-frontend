@@ -8,6 +8,12 @@ export default class Main extends Component {
     this.state = { fill: 100 };
   }
   render() {
-    return <AnimatedCircularProgress size={200} width={10} fill={this.state.fill} prefill={100} />;
+    return (
+      <View>
+        <AnimatedCircularProgress size={200} width={10} fill={this.state.fill} prefill={100}>
+          {this.props.children}
+        </AnimatedCircularProgress>
+      </View>
+    );
   }
 }

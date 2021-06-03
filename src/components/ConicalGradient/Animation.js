@@ -26,12 +26,12 @@ export default class AnimatedCircularProgress extends Component {
   animateFill() {
     const { tension, friction } = this.props;
 
-    Animated.spring(this.state.chartFillAnimation, {
-      toValue: this.props.fill,
-      tension,
-      friction,
-      // useNativeDriver: true,
-    }).start();
+    // Animated.spring(this.state.chartFillAnimation, {
+    //   toValue: this.props.fill,
+    //   tension,
+    //   friction,
+    //   // useNativeDriver: true,
+    // }).start();
   }
 
   render() {
