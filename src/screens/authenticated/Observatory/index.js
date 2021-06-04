@@ -57,3 +57,5 @@
 //   /* justify-content: center;
 //   align-items: center; */
 // `;
+
+export { default } from './Observatory';
