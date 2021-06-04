@@ -10,8 +10,6 @@ const styles = StyleSheet.create({
 });
 
 export default function Carrousel({ elements }) {
-  // const [DATA, setDATA] = useState([...elements, ...elements, ...elements]);
-
   return (
     <View>
       <FlatList
@@ -19,7 +17,6 @@ export default function Carrousel({ elements }) {
         renderItem={Item}
         keyExtractor={(item) => item.title}
         onEndReachedThreshold
-        // onScroll={({}) => console.log(a)}
         horizontal
         centerContent
         showsVerticalScrollIndicator={false}
@@ -29,10 +26,10 @@ export default function Carrousel({ elements }) {
   );
 }
 
-function Item({ item }) {
-  const { title, action } = item;
+function Item({ item, onChange }) {
+  const { title, component: Component } = item;
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={() => onChange(Component)}>
       <View style={styles.button}>
         <Text>{title}</Text>
       </View>

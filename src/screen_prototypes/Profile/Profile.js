@@ -3,7 +3,6 @@ import { View, Image, StyleSheet, SafeAreaView, ScrollView, FlatList, StatusBar 
 import DummyData from '../../controllers/DummyDataController';
 import { ConicalGradient, Carrousel, Text } from '../../components';
 import { elements, profile_mock } from './mocks';
-import StickyParallaxHeader from 'react-native-sticky-parallax-header';
 
 const profile_size = { width: 200, height: 200, padding: 20 };
 
@@ -14,12 +13,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: StatusBar.currentHeight,
-    marginBottom: 10,
   },
   profile_item: { marginBottom: 20 },
   profile_picture: { width: width - padding, aspectRatio: 1, borderRadius: width - padding / 2 },
   profile_description: { textAlign: 'center' },
   profile_name: {
+    paddingTop: 44,
     textAlign: 'center',
     fontSize: 19,
     fontWeight: '700',
@@ -34,69 +33,77 @@ const styles = StyleSheet.create({
 
 const DATA = [
   { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
-  { title: '1', text: '1', id: 1 },
+  { title: '1', text: '1', id: 2 },
+  { title: '1', text: '1', id: 3 },
+  { title: '1', text: '1', id: 4 },
+  { title: '1', text: '1', id: 5 },
+  { title: '1', text: '1', id: 6 },
+  { title: '1', text: '1', id: 7 },
+  { title: '1', text: '1', id: 8 },
+  { title: '1', text: '1', id: 9 },
+  { title: '1', text: '1', id: 10 },
+  { title: '1', text: '1', id: 11 },
+  { title: '1', text: '1', id: 12 },
+  { title: '1', text: '1', id: 13 },
+  { title: '1', text: '1', id: 14 },
+  { title: '1', text: '1', id: 15 },
+  { title: '1', text: '1', id: 16 },
+  { title: '1', text: '1', id: 17 },
+  { title: '1', text: '1', id: 18 },
+  { title: '1', text: '1', id: 19 },
+  { title: '1', text: '1', id: 20 },
+  { title: '1', text: '1', id: 21 },
+  { title: '1', text: '1', id: 22 },
+  { title: '1', text: '1', id: 23 },
+  { title: '1', text: '1', id: 24 },
 ];
 
-// function ItemComponent({ data }) {
-//   return (
-//     <View style={{ backgroundColor: 'grey', padding: 10, margin: 10, borderRadius: 10 }}>
-//       <Text>{data.title}</Text>
-//       <Text>{data.text}</Text>
-//     </View>
-//   );
-// }
-
-export default function Profile() {
-  useEffect(() => {
-    // Pull data from Back End
-    (async () => {
-      // Cached
-      if (!profile) {
-        try {
-          const profileDetails = (await DummyData.getRandomUsers()).results[0];
-          setProfile(profileDetails);
-        } catch (e) {
-          setProfile(mock);
-        }
-      }
-    })();
-  }, []);
-
+function ItemComponent({ item }) {
   return (
-    <>
-      <StickyParallaxHeader headerType="DetailsHeader" />
-    </>
+    <View style={{ backgroundColor: 'grey', padding: 10, margin: 10, borderRadius: 10 }}>
+      <Text>{item.title}</Text>
+      <Text>{item.text}</Text>
+    </View>
   );
 }
 
-function Header() {
+export default function Profile() {
   const [profile, setProfile] = useState(profile_mock);
   const [user, setUserData] = useState({
     quote: 'Seagulls are the eagles of the sea.',
   });
 
+  useEffect(() => {
+    // Pull data from Back End
+    (async () => {
+      // Cached
+      // if (!profile) {
+      try {
+        const profileDetails = (await DummyData.getRandomUsers()).results[0];
+        setProfile(profileDetails);
+      } catch (e) {
+        setProfile(mock);
+      }
+      // }
+    })();
+  }, []);
+
+  return (
+    <>
+      <ScrollView stickyHeaderIndices={[1]}>
+        <Header profile={profile} user={user} />
+
+        {/* <CarrouselHeader profile={profile} onChange={handle}/> */}
+
+        <View>
+          <FlatList data={DATA} renderItem={ItemComponent} />
+        </View>
+      </ScrollView>
+    </>
+  );
+}
+
+function Header({ profile, user }) {
   return (
     <>
       <View style={styles.profile_container}>
@@ -108,13 +115,20 @@ function Header() {
           </View>
         </SafeAreaView>
 
-        <View style={styles.profile_item}>
+        <View>
           <Text style={styles.profile_description} variant="h1">
             Software Engineer at Facebook {'\n'} "{user.quote}"
           </Text>
         </View>
       </View>
-      <View>
+    </>
+  );
+}
+
+function CarrouselHeader({ profile }) {
+  return (
+    <>
+      <View style={{ backgroundColor: 'white', justifyContent: 'center' }}>
         <View style={styles.profile_item}>
           <Text style={styles.profile_name}>
             {profile.name.first} {profile.name.last}
@@ -122,7 +136,9 @@ function Header() {
           <Text style={styles.profile_username}>@{profile.login.username}</Text>
         </View>
 
-        <View style={{ ...styles.divider, ...styles.profile_item }} />
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{ ...styles.divider, ...styles.profile_item }} />
+        </View>
 
         <View style={styles.profile_item}>
           <Carrousel elements={elements} />

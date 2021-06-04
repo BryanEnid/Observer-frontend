@@ -1,27 +1,31 @@
+const Component = (props) => {
+  return <Text>asd</Text>;
+};
+
 export const elements = [
   {
     title: 'Audio',
-    action: () => {},
+    component: () => {},
   },
   {
     title: 'Video',
-    action: () => {},
+    component: () => {},
   },
   {
     title: 'Quests',
-    action: () => {},
+    component: () => {},
   },
   {
     title: 'Recommends',
-    action: () => {},
+    component: () => {},
   },
   {
     title: 'Resources',
-    action: () => {},
+    component: () => {},
   },
   {
     title: 'Texts',
-    action: () => {},
+    component: () => {},
   },
 ];
 
