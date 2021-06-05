@@ -3,14 +3,14 @@ import { Audio } from '../Carousel';
 import { Text } from '../../components';
 
 export const elements = [
-  // {
-  //   title: 'Audio',
-  //   component: Audio,
-  // },
-  // {
-  //   title: 'Video',
-  //   component: () => <Text>Video</Text>,
-  // },
+  {
+    title: 'Audio',
+    component: Audio,
+  },
+  {
+    title: 'Video',
+    component: () => <Text>Video</Text>,
+  },
   // {
   //   title: 'Quests',
   //   component: () => <Text>Video</Text>,

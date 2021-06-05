@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, TextInput, View } from "react-native";
-import { Profile } from "./src/screen_prototypes";
-import { PortalProvider } from "react-native-portal";
+import React from 'react';
+import { Text, TextInput, View } from 'react-native';
+import { Profile } from './src/screen_prototypes';
+import { PortalProvider } from 'react-native-portal';
 
 // // Disable Font Scaling
 Text.defaultProps = Text.defaultProps || {};

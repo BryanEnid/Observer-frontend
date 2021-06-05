@@ -12,12 +12,9 @@ const styles = StyleSheet.create({
 });
 
 export default function Carousel({ elements }) {
-  const InitialComponent = elements[0].component;
-  const [Component, setComponent] = useState(InitialComponent);
+  const [Screen, setScreen] = useState(() => elements[0].component);
 
-  const handleChange = (Module) => {
-    setComponent(<Module />);
-  };
+  const handleChange = (item) => !(Screen == item.component) && setScreen(() => item.component);
 
   return (
     <View>
@@ -31,19 +28,19 @@ export default function Carousel({ elements }) {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
-      <BlackPortal name="wow">{Component}</BlackPortal>
+      <BlackPortal name="Carrousel Screens">
+        <Screen />
+      </BlackPortal>
     </View>
   );
 }
 
 function Item({ item, onChange }) {
-  const { title, component: Component } = item;
-
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => onChange(Component)}>
+      <TouchableWithoutFeedback onPress={() => onChange(item)}>
         <View style={styles.button}>
-          <Text>{title}</Text>
+          <Text>{item.title}</Text>
         </View>
       </TouchableWithoutFeedback>
     </>
