@@ -61,7 +61,7 @@ function Sticky({ profile }) {
           <Text style={styles.profile_name}>
             {profile.name.first} {profile.name.last}
           </Text>
-          <Text style={styles.profile_username}>@{profile.login.username}</Text>
+          {/* <Text style={styles.profile_username}>@{profile.login.username}</Text> */}
         </View>
 
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
