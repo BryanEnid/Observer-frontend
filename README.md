@@ -36,6 +36,6 @@
 
 <a href="https://drive.google.com/drive/folders/14KeXgXE0hybkwYyEQNmTJ1Ilv7KmFh6s?usp=sharing">Resources</a>
 
-#Technologies
+# Technologies
 
 - MediaPipe (Google) ML Detections
