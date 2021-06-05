@@ -4,7 +4,7 @@ import DummyData from '../../controllers/DummyDataController';
 import { ConicalGradient, Carousel, Text, Divider } from '../../components';
 import { WhitePortal } from 'react-native-portal';
 import { profile_mock } from './mocks';
-import { elements } from './CarrouselScreensSetup';
+import { elements } from './CarouselElements';
 
 const profile_size = { width: 200, height: 200, padding: 20 };
 const { width, height, padding } = profile_size;
@@ -61,14 +61,16 @@ function Sticky({ profile }) {
           <Text style={styles.profile_name}>
             {profile.name.first} {profile.name.last}
           </Text>
-          {/* <Text style={styles.profile_username}>@{profile.login.username}</Text> */}
+          <Text style={styles.profile_username}>@{profile.login.username}</Text>
         </View>
 
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Divider style={styles.profile_item} />
         </View>
 
-        <View style={styles.profile_item}>{!!elements.length && <Carousel elements={elements} />}</View>
+        <View style={styles.profile_item}>
+          <Carousel elements={elements} />
+        </View>
       </View>
     </>
   );

@@ -37,12 +37,17 @@ export default function Carousel({ elements }) {
 
 function Item({ item, onChange }) {
   return (
-    <>
-      <TouchableWithoutFeedback onPress={() => onChange(item)}>
-        <View style={styles.button}>
-          <Text>{item.title}</Text>
-        </View>
-      </TouchableWithoutFeedback>
-    </>
+    <TouchableWithoutFeedback onPress={() => onChange(item)}>
+      <View style={styles.button}>
+        <Text>{item.title}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
+
+Carousel.propTypes = {
+  /**
+   * Array of elements to render. Each item needs a title and a component to render, ex. {title: string, component: React.element}
+   */
+  elements: PropTypes.array.isRequired,
+};
