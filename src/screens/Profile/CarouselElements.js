@@ -1,3 +1,5 @@
+import React from 'react';
+import { Text } from '../../components/';
 import Audio from '../Audio';
 
 export const elements = [
@@ -5,10 +7,10 @@ export const elements = [
     title: 'Audio',
     component: Audio,
   },
-  // {
-  //   title: 'Video',
-  //   component: () => <Text>Video</Text>,
-  // },
+  {
+    title: 'Video',
+    component: () => <Text>Video</Text>,
+  },
   // {
   //   title: 'Quests',
   //   component: () => <Text>Video</Text>,

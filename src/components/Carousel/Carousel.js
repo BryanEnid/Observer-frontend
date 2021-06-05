@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import Text from '../../components/Text';
-import { BlackPortal } from 'react-native-portal';
+import { BlackPortal } from '../Portal';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, StyleSheet, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
 import DummyData from '../../controllers/DummyDataController';
-import { ConicalGradient, Carousel, Text, Divider } from '../../components';
-import { WhitePortal } from 'react-native-portal';
+import { ConicalGradient, Carousel, Text, Divider, WhitePortal } from '../../components';
+
 import { profile_mock } from './mocks';
 import { elements } from './CarouselElements';
 
