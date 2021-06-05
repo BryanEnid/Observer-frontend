@@ -54,8 +54,6 @@ function getColorsFromTheme(colors) {
 export default function Text({ variant, color, children, ...rest }) {
   let style = { ...getStylesFromVariant(variant), ...getColorsFromTheme(color) };
 
-  // const styles = StyleSheet.create(obj);
-
   return (
     <Font style={style} {...rest}>
       {children}

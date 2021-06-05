@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  FlatList,
-  StatusBar,
-} from "react-native";
-import DummyData from "../../controllers/DummyDataController";
-import { ConicalGradient, Carousel, Text, Divider } from "../../components";
-import { WhitePortal } from "react-native-portal";
-import { profile_mock } from "./mocks";
-import { elements } from "./carousel_screens";
+import React, { useEffect, useState } from 'react';
+import { View, Image, StyleSheet, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
+import DummyData from '../../controllers/DummyDataController';
+import { ConicalGradient, Carousel, Text, Divider } from '../../components';
+import { WhitePortal } from 'react-native-portal';
+import { profile_mock } from './mocks';
+import { elements } from './CarrouselScreensSetup';
 
 const profile_size = { width: 200, height: 200, padding: 20 };
-
 const { width, height, padding } = profile_size;
 
 const styles = StyleSheet.create({
   profile_container: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: StatusBar.currentHeight,
   },
   profile_item: { marginBottom: 20 },
@@ -30,31 +21,15 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: width - padding / 2,
   },
-  profile_description: { textAlign: "center" },
+  profile_description: { textAlign: 'center' },
   profile_name: {
     paddingTop: 44,
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 19,
-    fontWeight: "700",
+    fontWeight: '700',
   },
-  profile_username: { textAlign: "center" },
+  profile_username: { textAlign: 'center' },
 });
-
-function ItemComponent({ item }) {
-  return (
-    <View
-      style={{
-        backgroundColor: "grey",
-        padding: 10,
-        margin: 10,
-        borderRadius: 10,
-      }}
-    >
-      <Text>{item.title}</Text>
-      <Text>{item.text}</Text>
-    </View>
-  );
-}
 
 function Header({ profile, user }) {
   return (
@@ -63,17 +38,14 @@ function Header({ profile, user }) {
         <SafeAreaView>
           <View style={{ height: height, ...styles.profile_item }}>
             <ConicalGradient>
-              <Image
-                source={{ uri: profile?.picture?.large }}
-                style={styles.profile_picture}
-              />
+              <Image source={{ uri: profile?.picture?.large }} style={styles.profile_picture} />
             </ConicalGradient>
           </View>
         </SafeAreaView>
 
         <View>
           <Text style={styles.profile_description} variant="h1">
-            Software Engineer at Facebook {"\n"} "{user.quote}"
+            Software Engineer at Facebook {'\n'} "{user.quote}"
           </Text>
         </View>
       </View>
@@ -84,7 +56,7 @@ function Header({ profile, user }) {
 function Sticky({ profile }) {
   return (
     <>
-      <View style={{ backgroundColor: "white", justifyContent: "center" }}>
+      <View style={{ backgroundColor: 'white', justifyContent: 'center' }}>
         <View style={styles.profile_item}>
           <Text style={styles.profile_name}>
             {profile.name.first} {profile.name.last}
@@ -92,15 +64,11 @@ function Sticky({ profile }) {
           <Text style={styles.profile_username}>@{profile.login.username}</Text>
         </View>
 
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Divider style={styles.profile_item} />
         </View>
 
-        <View style={styles.profile_item}>
-          <Carousel elements={elements} />
-        </View>
+        <View style={styles.profile_item}>{!!elements.length && <Carousel elements={elements} />}</View>
       </View>
     </>
   );
@@ -109,21 +77,17 @@ function Sticky({ profile }) {
 export default function Profile() {
   const [profile, setProfile] = useState(profile_mock);
   const [user, setUserData] = useState({
-    quote: "Seagulls are the eagles of the sea.",
+    quote: 'Seagulls are the eagles of the sea.',
   });
 
   useEffect(() => {
-    // Pull data from Back End
     (async () => {
-      // Cached
-      // if (!profile) {
       try {
         const profileDetails = (await DummyData.getRandomUsers()).results[0];
         setProfile(profileDetails);
       } catch (e) {
         setProfile(mock);
       }
-      // }
     })();
   }, []);
 
@@ -135,7 +99,9 @@ export default function Profile() {
         <Sticky profile={profile} />
 
         <View>
-          <WhitePortal name="wow"></WhitePortal>
+          {/* See Carrousel Component for logic
+          See CarrouselScreensSetup for registering screens */}
+          <WhitePortal name="Carrousel Screens" />
         </View>
       </ScrollView>
     </>
