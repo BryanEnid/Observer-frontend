@@ -1,1 +1,1 @@
-export { BlackPortal, PortalProvider, WhitePortal } from './Portal';
+export { PortalProvider, PortalGate, PortalContext } from './Portal';

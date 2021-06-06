@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, StyleSheet, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
 import DummyData from '../../controllers/DummyDataController';
-import { ConicalGradient, Carousel, Text, Divider, WhitePortal } from '../../components';
+import { ConicalGradient, Carousel, Text, Divider, PortalGate } from '../../components';
 
 import { profile_mock } from './mocks';
 import { elements } from './CarouselElements';
@@ -103,7 +103,7 @@ export default function Profile() {
         <View>
           {/* See Carrousel Component for logic
           See CarrouselScreensSetup for registering screens */}
-          <WhitePortal name="Carrousel Screens" />
+          <PortalGate gateName="ProfileCarouselScreens" />
         </View>
       </ScrollView>
     </>

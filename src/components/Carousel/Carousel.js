@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import Text from '../../components/Text';
-import { BlackPortal } from '../Portal';
+import React, { useState, useEffect, useContext } from 'react';
+import { View, FlatList, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, PortalContext } from '../../components';
+import { PortalGate } from '../Portal';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -12,15 +12,11 @@ const styles = StyleSheet.create({
 });
 
 export default function Carousel({ elements }) {
-  const [Screen, setScreen] = useState(() => elements[0].component);
-
-  const handleChange = (item) => !(Screen == item.component) && setScreen(() => item.component);
-
   return (
     <View>
       <FlatList
         data={elements}
-        renderItem={({ item }) => <Item item={item} onChange={handleChange} />}
+        renderItem={({ item }) => <Item item={item} />}
         keyExtractor={(item) => item.title}
         onEndReachedThreshold
         horizontal
@@ -28,18 +24,17 @@ export default function Carousel({ elements }) {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
-      <BlackPortal name="Carrousel Screens">
-        <Screen />
-      </BlackPortal>
     </View>
   );
 }
 
 function Item({ item, onChange }) {
+  const { teleport } = useContext(PortalContext);
+  const { title, component: Component } = item;
   return (
-    <TouchableWithoutFeedback onPress={() => onChange(item)}>
+    <TouchableWithoutFeedback onPress={() => teleport('ProfileCarouselScreens', <Component />)}>
       <View style={styles.button}>
-        <Text>{item.title}</Text>
+        <Text>{title}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
