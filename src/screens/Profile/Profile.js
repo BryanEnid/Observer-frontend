@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, StyleSheet, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
+import { View, Image, StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import DummyData from '../../controllers/DummyDataController';
-import { ConicalGradient, Carousel, Text, Divider, PortalGate } from '../../components';
+import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../components';
 
-import { profile_mock } from './mocks';
-import { elements } from './CarouselElements';
+import { profileMock } from './mocks';
+import elements from './CarouselElements';
 
-const profile_size = { width: 200, height: 200, padding: 20 };
-const { width, height, padding } = profile_size;
+const profileSize = { width: 200, height: 200, padding: 20 };
+const { width, height, padding } = profileSize;
 
 const styles = StyleSheet.create({
   profile_container: {
@@ -36,7 +36,7 @@ function Header({ profile, user }) {
     <>
       <View style={styles.profile_container}>
         <SafeAreaView>
-          <View style={{ height: height, ...styles.profile_item }}>
+          <View style={{ height, ...styles.profile_item }}>
             <ConicalGradient>
               <Image source={{ uri: profile?.picture?.large }} style={styles.profile_picture} />
             </ConicalGradient>
@@ -45,7 +45,7 @@ function Header({ profile, user }) {
 
         <View>
           <Text style={styles.profile_description} variant="h1">
-            Software Engineer at Facebook {'\n'} "{user.quote}"
+            {`Software Engineer at Facebook\n"${user.quote}"`}
           </Text>
         </View>
       </View>
@@ -69,7 +69,7 @@ function Sticky({ profile }) {
         </View>
 
         <View style={styles.profile_item}>
-          <Carousel elements={elements} />
+          <Carousel elements={elements} gateNameRender="ProfileCarouselScreens" />
         </View>
       </View>
     </>
@@ -77,8 +77,8 @@ function Sticky({ profile }) {
 }
 
 export default function Profile() {
-  const [profile, setProfile] = useState(profile_mock);
-  const [user, setUserData] = useState({
+  const [profile, setProfile] = useState(profileMock);
+  const [user] = useState({
     quote: 'Seagulls are the eagles of the sea.',
   });
 
@@ -88,7 +88,7 @@ export default function Profile() {
         const profileDetails = (await DummyData.getRandomUsers()).results[0];
         setProfile(profileDetails);
       } catch (e) {
-        setProfile(mock);
+        setProfile(profileMock);
       }
     })();
   }, []);
@@ -103,7 +103,7 @@ export default function Profile() {
         <View>
           {/* See Carrousel Component for logic
           See CarrouselScreensSetup for registering screens */}
-          <PortalGate gateName="ProfileCarouselScreens" />
+          <Portal name="ProfileCarouselScreens" />
         </View>
       </ScrollView>
     </>

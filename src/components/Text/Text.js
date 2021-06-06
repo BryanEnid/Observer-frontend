@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text as Font } from 'react-native';
+import { Text as Font } from 'react-native';
 
 function getStylesFromVariant(variant) {
   switch (variant) {
     case 'h1': {
       return { fontSize: 30 };
-      break;
     }
     case 'h2': {
       break;
@@ -42,17 +41,16 @@ function getStylesFromVariant(variant) {
     }
     default: {
       return {};
-      break;
     }
   }
 }
 
 function getColorsFromTheme(colors) {
-  return {};
+  return { ...colors };
 }
 
 export default function Text({ variant, color, children, ...rest }) {
-  let style = { ...getStylesFromVariant(variant), ...getColorsFromTheme(color) };
+  const style = { ...getStylesFromVariant(variant), ...getColorsFromTheme(color) };
 
   return (
     <Font style={style} {...rest}>

@@ -1,15 +1,9 @@
-import React from 'react';
-import { Text } from '../../components/';
 import Audio from '../Audio';
 
-export const elements = [
+export default [
   {
     title: 'Audio',
     component: Audio,
-  },
-  {
-    title: 'Video',
-    component: () => <Text>Video</Text>,
   },
   // {
   //   title: 'Quests',

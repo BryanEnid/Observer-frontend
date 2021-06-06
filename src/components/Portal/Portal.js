@@ -2,33 +2,39 @@ import React from 'react';
 
 export const PortalContext = React.createContext({
   gates: {},
-  teleport: (gateName, element) => {},
+  teleport: () => {},
 });
 
 export class PortalProvider extends React.Component {
-  state = {
-    gates: {},
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      gates: {},
+    };
+  }
+
+  teleport = (name, element) => this.setState({ gates: { ...this.state.gates, [name]: element } });
 
   render() {
     const { children } = this.props;
-    return <PortalContext.Provider value={{ gates: this.state.gates, teleport: this.teleport }}>{children}</PortalContext.Provider>;
+    return (
+      <PortalContext.Provider value={{ gates: this.state.gates, teleport: this.teleport }}>
+        {children}
+      </PortalContext.Provider>
+    );
   }
-
-  teleport = (gateName, element) => this.setState({ gates: { ...this.state.gates, [gateName]: element } });
 }
 
-export function PortalGate({ gateName, children }) {
+export function Portal({ name, children }) {
   return (
     <PortalContext.Consumer>
-      {(value) => {
-        return (
-          <React.Fragment>
-            {value.gates[gateName]}
-            {children && children(value.teleport)}
-          </React.Fragment>
-        );
-      }}
+      {(value) => (
+        <>
+          {value.gates[name]}
+          {children && children(value.teleport)}
+        </>
+      )}
     </PortalContext.Consumer>
   );
 }
