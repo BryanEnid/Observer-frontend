@@ -1,63 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1621562601583" clover="3.2.0">
-  <project timestamp="1621562601583" name="All files">
-    <metrics statements="27" coveredstatements="22" conditionals="9" coveredconditionals="5" methods="10" coveredmethods="8" elements="46" coveredelements="35" complexity="0" loc="27" ncloc="27" packages="4" files="6" classes="6"/>
-    <package name="mobile">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="App.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/App.js">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="mobile.src.controllers">
-      <metrics statements="24" coveredstatements="20" conditionals="9" coveredconditionals="5" methods="8" coveredmethods="7"/>
-      <file name="DummyDataController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/DummyDataController.js">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-      </file>
-      <file name="HTTPRequestController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/HTTPRequestController.js">
-        <metrics statements="12" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="3" coveredmethods="2"/>
-        <line num="3" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="4" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="5" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-      </file>
-      <file name="LocalStorageController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/LocalStorageController.js">
-        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="mobile.src.screen_prototypes">
-      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/screen_prototypes/index.js">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-    </package>
-    <package name="mobile.src.screen_prototypes.Profile">
-      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Profile.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/screen_prototypes/Profile/Profile.js">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-      </file>
-    </package>
+<coverage generated="1622943206839" clover="3.2.0">
+  <project timestamp="1622943206839" name="All files">
+    <metrics statements="27" coveredstatements="20" conditionals="9" coveredconditionals="5" methods="9" coveredmethods="7" elements="45" coveredelements="32" complexity="0" loc="27" ncloc="27" packages="1" files="3" classes="3"/>
+    <file name="DummyDataController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/DummyDataController.js">
+      <metrics statements="11" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
+      <line num="29" count="0" type="stmt"/>
+      <line num="30" count="0" type="stmt"/>
+    </file>
+    <file name="HTTPRequestController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/HTTPRequestController.js">
+      <metrics statements="12" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="3" coveredmethods="2"/>
+      <line num="3" count="2" type="cond" truecount="0" falsecount="1"/>
+      <line num="4" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="5" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="4" type="stmt"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="9" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="20" count="4" type="stmt"/>
+      <line num="29" count="0" type="stmt"/>
+    </file>
+    <file name="LocalStorageController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/LocalStorageController.js">
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+    </file>
   </project>
 </coverage>

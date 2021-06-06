@@ -12,7 +12,11 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "ignorePatterns": ["/src/components/ConicalGradient/**", "/src/components/Portal/**"],
+  "ignorePatterns": [
+    "/src/components/ConicalGradient/**",
+    "/src/components/Portal/**",
+    "*.test.js"
+  ],
   "parser": "@babel/eslint-parser",
   "plugins": ["react", "@babel"],
   "rules": {

@@ -1,13 +1,13 @@
 import React from 'react';
-// import { render } from '@testing-library/react-native';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 
 import App from './App';
 
-it('renders correctly', () => {
-  const tree = renderer.create(<App />).toJSON();
-  expect(tree.children.length).toBe(1);
+// it('renders correctly', () => {
+//   const { getByTestId, getByText, queryByTestId, toJSON } = render(<App />);
+//   expect(getByText(/App/))
 
-  // const { toJSON } = render(<App />); // ** THIS DOESN'T WORK EITHER **
-  // expect(toJSON()).toMatchSnapshot();
-});
+//   // const { toJSON } = render(<App />); // ** THIS DOESN'T WORK EITHER **
+//   // expect(toJSON()).toMatchSnapshot();
+// });
