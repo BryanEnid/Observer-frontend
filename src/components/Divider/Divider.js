@@ -10,5 +10,5 @@ const styles = StyleSheet.create({
 });
 
 export default function Divider({ style, ...rest }) {
-  return <View style={{ ...styles.divider, ...style }} {...rest} />;
+  return <View testID="divider" style={{ ...styles.divider, ...style }} {...rest} />;
 }

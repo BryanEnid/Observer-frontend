@@ -1,19 +1,26 @@
 import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
 import { Text, Portal, PortalProvider } from '../';
-import renderer from 'react-test-renderer';
-
 import Carousel from './Carousel';
 
 describe('<Carousel />', () => {
-  it('Renders and passes data through portal', () => {
-    const Template = (
-      <PortalProvider>
-        <Carousel
-          elements={[{ title: 'button', component: () => <Text>Text to test</Text> }]}
-          gateNameRender="dimension"
-        />
-        <Portal name="dimension" />
-      </PortalProvider>
-    );
+  const Template = (
+    <PortalProvider>
+      <Carousel
+        elements={[
+          { title: 'home', component: () => <Text>home screen</Text> },
+          { title: 'settings', component: () => <Text>settings screen</Text> },
+        ]}
+        gateNameRender="end"
+      />
+      <Portal name="end" />
+    </PortalProvider>
+  );
+
+  it('changes screens when pressing buttons', async () => {
+    const screen = render(Template);
+    const settingsButton = screen.getByText('settings');
+    for (_ of '  ') fireEvent.press(settingsButton); // More than once (check re-renders)
+    expect(screen.getByText('settings screen')).toBeDefined();
   });
 });

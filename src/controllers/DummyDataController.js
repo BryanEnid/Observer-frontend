@@ -22,11 +22,11 @@ export default class DummyData {
     return Request.get('/videos/popular');
   }
 
-  static getRandomTexts() {
-    Request.headers = {
-      Authorization: '563492ad6f91700001000001fb15f65e0bc34e60843e76e311a7b127',
-    };
-    Request.baseURL = 'https://fakerapi.it/api/v1';
-    return Request.get('/texts?_quantity=1&_characters=500');
-  }
+  // static getRandomTexts() {
+  //   Request.headers = {
+  //     Authorization: '563492ad6f91700001000001fb15f65e0bc34e60843e76e311a7b127',
+  //   };
+  //   Request.baseURL = 'https://fakerapi.it/api/v1';
+  //   return Request.get('/texts?_quantity=1&_characters=500');
+  // }
 }

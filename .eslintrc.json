@@ -28,7 +28,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": [0],
     "react/jsx-props-no-spreading": [0],
-    "react/jsx-one-expression-per-line": [0]
-    // "import/prefer-default-export": [1, { "allow": "as-needed" }]
+    "react/jsx-one-expression-per-line": [0],
+    "comma-dangle": "off"
   }
 }

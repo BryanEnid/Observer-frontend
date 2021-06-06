@@ -64,7 +64,7 @@ Carousel.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       component: PropTypes.elementType.isRequired,
-    }),
+    })
   ).isRequired,
 
   /**
