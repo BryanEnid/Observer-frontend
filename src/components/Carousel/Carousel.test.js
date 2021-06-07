@@ -17,10 +17,10 @@ describe('<Carousel />', () => {
     </PortalProvider>
   );
 
-  it('changes screens when pressing buttons', async () => {
+  it('should change screens when pressing buttons', async () => {
     const screen = render(Template);
     const settingsButton = screen.getByText('settings');
-    for (_ of '  ') fireEvent.press(settingsButton); // More than once (check re-renders)
+    for (let _ of '  ') fireEvent.press(settingsButton); // More than once (check re-renders)
     expect(screen.getByText('settings screen')).toBeDefined();
   });
 });

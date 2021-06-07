@@ -6,7 +6,7 @@ import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../componen
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
 
-const profileSize = { width: 200, height: 200, padding: 20 };
+const profileSize = { width: 180, height: 180, padding: 20 };
 const { width, height, padding } = profileSize;
 
 const styles = StyleSheet.create({
@@ -25,8 +25,6 @@ const styles = StyleSheet.create({
   profile_name: {
     paddingTop: 44,
     textAlign: 'center',
-    fontSize: 19,
-    fontWeight: '700',
   },
   profile_username: { textAlign: 'center' },
 });
@@ -44,7 +42,7 @@ function Header({ profile, user }) {
         </SafeAreaView>
 
         <View>
-          <Text style={styles.profile_description} variant="h1">
+          <Text variant="caption" style={styles.profile_description}>
             {`Software Engineer at Facebook\n"${user.quote}"`}
           </Text>
         </View>
@@ -58,10 +56,12 @@ function Sticky({ profile }) {
     <>
       <View style={{ backgroundColor: 'white', justifyContent: 'center' }}>
         <View style={styles.profile_item}>
-          <Text style={styles.profile_name}>
+          <Text variant="h2" style={styles.profile_name}>
             {profile.name.first} {profile.name.last}
           </Text>
-          <Text style={styles.profile_username}>@{profile.login.username}</Text>
+          <Text variant="caption" style={styles.profile_username}>
+            @{profile.login.username}
+          </Text>
         </View>
 
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

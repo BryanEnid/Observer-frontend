@@ -17,8 +17,8 @@ const beginColor = [0x00, 0x00, 0x00];
 const endColor = [0xff, 0xff, 0xff];
 const noOfSeg = 4; // Number of Segments
 const LINEAR_GRADIENT_PREFIX_ID = 'gradientRing';
-const r1 = 95; // Inner width
-const r2 = 100; // Outer width
+const r1 = 82; // Inner width
+const r2 = 87; // Outer width
 
 const point1 = 1;
 const point2 = 1;
@@ -95,7 +95,13 @@ export default class CircularProgress extends Component {
         .endAngle(stopAngle - 0.005);
 
       const path = (
-        <Path x={this.props.size / 2} y={this.props.size / 2} key={fill + i} d={circlePath()} fill={'url(#' + LINEAR_GRADIENT_PREFIX_ID + (noOfSeg - i + 1) + ')'} />
+        <Path
+          x={this.props.size / 2}
+          y={this.props.size / 2}
+          key={fill + i}
+          d={circlePath()}
+          fill={'url(#' + LINEAR_GRADIENT_PREFIX_ID + (noOfSeg - i + 1) + ')'}
+        />
       );
       startAngle = stopAngle;
       stopAngle -= (2 * Math.PI) / noOfSeg;
@@ -124,8 +130,30 @@ export default class CircularProgress extends Component {
 
     return (
       <>
-        <View style={{ position: 'absolute', top: 100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>{children}</View>
-        <View style={{ position: 'absolute', top: 100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center' }}>
+        <View
+          style={{
+            position: 'absolute',
+            top: 100,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {children}
+        </View>
+        <View
+          style={{
+            position: 'absolute',
+            top: 100,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <Svg width={size} height={size}>
             <Defs>{this.renderLinearGradients()}</Defs>
             <G rotate={rotation - 90}>{this.renderCirclePaths()}</G>

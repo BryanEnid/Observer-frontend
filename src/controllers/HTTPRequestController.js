@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
 
-const requestWrapper = async (endpoint = '', options) => {
-  if (endpoint.length < 1) throw new Error('[ERROR] endpoint is required');
+const requestWrapper = async (endpoint, options) => {
   const { headers = {}, payload = '', method, baseURL } = options;
   const init = { method, headers };
   const url = new URL(endpoint, baseURL);
@@ -12,10 +11,6 @@ const requestWrapper = async (endpoint = '', options) => {
 };
 
 export default class Request {
-  baseURL = '';
-  options = {};
-  headers = {};
-
   static get(endpoint) {
     return requestWrapper(endpoint, {
       baseURL: this.baseURL,
