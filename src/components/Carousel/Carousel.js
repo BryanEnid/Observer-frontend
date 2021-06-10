@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import Text from '../../components/Text';
-import { BlackPortal } from 'react-native-portal';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { View, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { Text, PortalContext } from '..';
 
 const styles = StyleSheet.create({
   button: {
@@ -11,19 +10,30 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Carousel({ elements }) {
-  const InitialComponent = elements[0].component;
-  const [Component, setComponent] = useState(InitialComponent);
+export default function Carousel({ elements, gateNameRender }) {
+  const [currentItemIndex, setCurrentItemIndex] = useState(0);
+  const { teleport } = useContext(PortalContext);
 
-  const handleChange = (Module) => {
-    setComponent(<Module />);
+  useEffect(() => {
+    const InitialComponent = elements[0].component;
+    teleport(gateNameRender, <InitialComponent />);
+    return () => setCurrentItemIndex(0);
+  }, []);
+
+  const handleChange = (Component, index) => {
+    if (currentItemIndex !== index) {
+      teleport(gateNameRender, <Component />);
+      setCurrentItemIndex(index);
+    }
   };
 
   return (
     <View>
       <FlatList
         data={elements}
-        renderItem={({ item }) => <Item item={item} onChange={handleChange} />}
+        renderItem={({ item, index }) => (
+          <Item item={item} key={index} index={index} onChange={handleChange} />
+        )}
         keyExtractor={(item) => item.title}
         onEndReachedThreshold
         horizontal
@@ -31,21 +41,34 @@ export default function Carousel({ elements }) {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
-      <BlackPortal name="wow">{Component}</BlackPortal>
     </View>
   );
 }
 
-function Item({ item, onChange }) {
-  const { title, component: Component } = item;
-
+function Item({ item, onChange, index }) {
   return (
-    <>
-      <TouchableWithoutFeedback onPress={() => onChange(Component)}>
-        <View style={styles.button}>
-          <Text>{title}</Text>
-        </View>
-      </TouchableWithoutFeedback>
-    </>
+    <TouchableWithoutFeedback onPress={() => onChange(item.component, index)}>
+      <View style={styles.button}>
+        <Text>{item.title}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
+
+Carousel.propTypes = {
+  /**
+   * Array of elements to render. Each item needs a title and a component to render, ex.
+   * {title: string, component: React.element}
+   */
+  elements: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      component: PropTypes.elementType.isRequired,
+    })
+  ).isRequired,
+
+  /**
+   * Name of the Portal were screens will be rendered.
+   */
+  gateNameRender: PropTypes.string.isRequired,
+};
