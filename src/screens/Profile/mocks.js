@@ -1,4 +1,4 @@
-export const profile_mock = {
+export const profileMock = {
   name: {
     first: 'Bryan',
     last: 'Tejada',
@@ -7,3 +7,5 @@ export const profile_mock = {
     username: 'BryanEnid',
   },
 };
+
+export const x = '';
