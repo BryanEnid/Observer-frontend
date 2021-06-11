@@ -14,12 +14,17 @@ export default class DummyData {
     return Request.get('/v1/curated');
   }
 
-  static getRandomVideos() {
+  /**
+   *
+   * @param {string} orientation ( portrait | landscape | square )
+   * @returns Video URI
+   */
+  static getRandomVideos(orientation = 'portrait') {
     Request.headers = {
       Authorization: '563492ad6f91700001000001fb15f65e0bc34e60843e76e311a7b127',
     };
     Request.baseURL = 'https://api.pexels.com';
-    return Request.get('/videos/popular');
+    return Request.get(`/videos/popular?${orientation}`);
   }
 
   // static getRandomTexts() {
