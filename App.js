@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, TextInput } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import {
   useFonts,
@@ -9,14 +11,17 @@ import {
   Quicksand_400Regular,
   Quicksand_300Light,
 } from '@expo-google-fonts/quicksand';
-import { Profile } from './src/screens';
+import { Profile, ProfileVideo } from './src/screens';
 import { PortalProvider } from './src/components';
+import { navigationRef } from './src/controllers/NavigationController';
 
 // // Disable Font Scaling
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 TextInput.defaultProps = TextInput.defaultProps || {};
 TextInput.defaultProps.allowFontScaling = false;
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,7 +36,17 @@ export default function App() {
 
   return (
     <PortalProvider>
-      <Profile />
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator
+          initialRouteName="Profile"
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="ProfileVideo" component={ProfileVideo} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </PortalProvider>
   );
 }
