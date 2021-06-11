@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1623346004535" clover="3.2.0">
-  <project timestamp="1623346004535" name="All files">
-    <metrics statements="109" coveredstatements="92" conditionals="33" coveredconditionals="15" methods="40" coveredmethods="35" elements="182" coveredelements="142" complexity="0" loc="109" ncloc="109" packages="7" files="16" classes="16"/>
+<coverage generated="1623387307477" clover="3.2.0">
+  <project timestamp="1623387307478" name="All files">
+    <metrics statements="111" coveredstatements="93" conditionals="35" coveredconditionals="17" methods="40" coveredmethods="35" elements="186" coveredelements="145" complexity="0" loc="111" ncloc="111" packages="7" files="16" classes="16"/>
     <package name="components">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/components/index.js">
@@ -149,27 +149,29 @@
       </file>
     </package>
     <package name="controllers">
-      <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="6" methods="8" coveredmethods="8"/>
+      <metrics statements="22" coveredstatements="21" conditionals="8" coveredconditionals="8" methods="8" coveredmethods="8"/>
       <file name="DummyDataController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/DummyDataController.js">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
       </file>
       <file name="HTTPRequestController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/HTTPRequestController.js">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="4" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="5" count="5" type="stmt"/>
-        <line num="6" count="5" type="stmt"/>
-        <line num="8" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="5" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
+        <line num="4" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
       </file>
       <file name="LocalStorageController.js" path="/Users/bryanenid/Documents/Coding/StartUps/Observe/mobile/src/controllers/LocalStorageController.js">

@@ -79,6 +79,9 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "babel-jest"
     },
+    "transformIgnorePatterns": [
+      "node_modules/(?!@react-native|react-native)"
+    ],
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     }
