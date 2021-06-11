@@ -40,7 +40,7 @@ function getStylesFromVariant(variant) {
       break;
     }
     default: {
-      return {};
+      return { fontSize: 12, fontFamily: 'Quicksand_400' };
     }
   }
 }
