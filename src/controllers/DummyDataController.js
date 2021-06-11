@@ -19,12 +19,16 @@ export default class DummyData {
    * @param {string} orientation ( portrait | landscape | square )
    * @returns Video URI
    */
-  static getRandomVideos(orientation = 'portrait') {
+  static getRandomVideos(orientation = 'portrait', size = 'medium') {
     Request.headers = {
       Authorization: '563492ad6f91700001000001fb15f65e0bc34e60843e76e311a7b127',
     };
     Request.baseURL = 'https://api.pexels.com';
-    return Request.get(`/videos/popular?${orientation}`);
+    const queryOptions = ['technology', 'professional'];
+    const randomQuery = Math.round(Math.random() * options.length) - 1;
+    return Request.get(
+      `/videos/search?query=${queryOptions[randomQuery]}&orientation=${orientation}&size=${size}&per_page=80`
+    );
   }
 
   // static getRandomTexts() {
