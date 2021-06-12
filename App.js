@@ -23,6 +23,10 @@ TextInput.defaultProps.allowFontScaling = false;
 
 const Stack = createStackNavigator();
 
+const screenConfig = {
+  headerShown: false,
+};
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Quicksand_700: Quicksand_700Bold,
@@ -37,12 +41,7 @@ export default function App() {
   return (
     <PortalProvider>
       <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator
-          initialRouteName="Profile"
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
+        <Stack.Navigator initialRouteName="Profile" screenOptions={screenConfig}>
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="ProfileVideo" component={ProfileVideo} />
         </Stack.Navigator>

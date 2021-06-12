@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { Video, AVPlaybackStatus } from 'expo-av';
 
-export default function ProfileVideo({ route }) {
+export default function ProfileVideo({ route, children }) {
   const { uri } = route.params;
-  const video = React.useRef(null);
-  // const [status, setStatus] = React.useState({});
-
-  // useEffect(() => {}, []);
+  const video = useRef(null);
 
   return (
     <View style={styles.container}>
@@ -15,12 +12,13 @@ export default function ProfileVideo({ route }) {
         ref={video}
         style={styles.video}
         source={{ uri }}
-        // useNativeControls
         resizeMode="contain"
         isLooping
         onLayout={() => video.current.playAsync()}
         resizeMode={Video.RESIZE_MODE_STRETCH}
         volume={1}
+
+        // useNativeControls
         // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
       />
     </View>

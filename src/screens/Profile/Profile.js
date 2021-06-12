@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { View, Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import ActionSheet from 'react-native-actions-sheet';
 import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../components';
 import { NavigationController } from '../../controllers';
 import DummyData from '../../controllers/DummyDataController';
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
-import ActionSheet from 'react-native-actions-sheet';
 
 // Platform Fixes
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Header({ profile, user, video: videoURI }) {
+function Header({ profile, user, video: videoURI, navigation }) {
   const actionSheetRef = useRef();
   const scrollViewRef = useRef();
 
@@ -127,7 +127,7 @@ function Header({ profile, user, video: videoURI }) {
 function Sticky({ profile }) {
   return (
     <>
-      <View style={{ justifyContent: 'center' }}>
+      <View style={{ justifyContent: 'center', backgroundColor: 'white' }}>
         <View style={styles.profile_item}>
           <Text variant="h2" style={styles.profile_name}>
             {profile.name.first} {profile.name.last}
@@ -161,11 +161,14 @@ export default function Profile() {
       try {
         const profileDetails = (await DummyData.getRandomUsers()).results[0];
         const randomNumber = Math.round(Math.random() * 79);
-        setVideo((await DummyData.getRandomVideos()).videos[randomNumber].video_files[0].link);
+        const profileVideo = (await DummyData.getRandomVideos()).videos[randomNumber].video_files[0]
+          .link;
+        setVideo(profileVideo);
         setProfile(profileDetails);
       } catch (e) {
+        console.log(e.message);
         console.log(e);
-        setProfile(profileMock);
+        // setProfile(profileMock);
       }
     })();
   }, []);

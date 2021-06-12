@@ -25,7 +25,7 @@ export default class DummyData {
     };
     Request.baseURL = 'https://api.pexels.com';
     const queryOptions = ['technology', 'professional'];
-    const randomQuery = Math.round(Math.random() * options.length) - 1;
+    const randomQuery = Math.abs(Math.round(Math.random() * queryOptions.length - 1));
     return Request.get(
       `/videos/search?query=${queryOptions[randomQuery]}&orientation=${orientation}&size=${size}&per_page=80`
     );
