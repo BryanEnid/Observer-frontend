@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { View, Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../components';
 import { NavigationController } from '../../controllers';
 import DummyData from '../../controllers/DummyDataController';
@@ -8,7 +9,6 @@ import { profileMock } from './mocks';
 import elements from './CarouselElements';
 
 // Platform Fixes
-import { getStatusBarHeight } from 'react-native-status-bar-height';
 const statusBarHeight = getStatusBarHeight();
 
 // Styles
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Header({ profile, user, video: videoURI, navigation }) {
+function Header({ profile, user, video: videoURI }) {
   const actionSheetRef = useRef();
   const scrollViewRef = useRef();
 
@@ -104,9 +104,6 @@ function Header({ profile, user, video: videoURI, navigation }) {
         ref={actionSheetRef}
         onOpen={onOpen}
         statusBarTranslucent
-        bounceOnOpen={true}
-        bounciness={4}
-        gestureEnabled={true}
         onClose={onClose}
         defaultOverlayOpacity={0.3}
       >
