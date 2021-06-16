@@ -5,8 +5,8 @@ import { Text } from "..";
 export default function ({ items }) {
   return (
     <>
-      {items.map((item) => (
-        <View style={styles.card}>
+      {items.map((item, index) => (
+        <View style={styles.card} key={index}>
           {item.image}
           <Text style={styles.skill}>{item.skill}</Text>
         </View>

@@ -6,15 +6,13 @@ export default function ({ content }) {
   return (
     <View style={styles.card}>
       <Text style={styles.lineBreak}>
-        Hello, my name is Earl Livingston and I like seagulls. I genuinely care
-        about the enviroment. I am a graduate from Harvard & MIT.
+        {content.lineOne}
       </Text>
       <Text style={styles.lineBreak}>
-        I am an avid a designer and a generalist engineer who wishes to focus on
-        products that are sustainable and impactful to the world.
+        {content.lineTwo}
       </Text>
       <Text style={styles.lineBreak}>
-          wwww.earltheseagull.com
+          {content.landingLink}
       </Text>
     </View>
   );

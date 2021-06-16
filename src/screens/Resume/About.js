@@ -1,12 +1,21 @@
 import React from "react";
 import { SKILLS_CONFIG } from "../../components/SkillsCard/SkillsMockData";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Text, PlainCard, SkillsCard, SoftSkillsCard } from "../../components";
+import {
+  Text,
+  PlainCard,
+  SkillsCard,
+  SoftSkillsCard,
+  ExperienceCard,
+} from "../../components";
 import { MaterialIcons } from "@expo/vector-icons";
+import { BIO_MOCK_DATA } from "../../components/PlainCard/MockContent";
+import { MOCK_EXPERIENCE_CONFIG } from "../../components/ExperienceCard/ExperienceCard.config";
 
 const SoftSkillsConfig = require("../../components/SkillsCard/SoftSkills.json");
 
-export default function componentName() {
+export default function About() {
+  console.log(BIO_MOCK_DATA);
   return (
     <View>
       {/* Here it goes The Title Section */}
@@ -16,7 +25,7 @@ export default function componentName() {
       </View>
 
       {/* Here it goes the Plain Card Component */}
-      <PlainCard />
+      <PlainCard content={BIO_MOCK_DATA} />
 
       {/* Here it goes the Skills Title Section */}
       <View style={styles.titleSection}>
@@ -46,6 +55,11 @@ export default function componentName() {
         <Text variant="h3">Experience</Text>
         <Text style={styles.moreDetailsLink}>View all</Text>
       </View>
+
+      {/* Here it goes the experience card component */}
+      {MOCK_EXPERIENCE_CONFIG.map((item, index) => (
+        <ExperienceCard experince={item} key={index} />
+      ))}
     </View>
   );
 }
@@ -84,6 +98,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  }
-  
+  },
 });
