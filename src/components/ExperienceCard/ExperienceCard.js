@@ -16,9 +16,9 @@ export default function ExperienceCard({ experince }) {
           <Text style={styles.card_subtitle}>{experince.company}</Text>
           <Text style={styles.card_timing}>{experince.period}</Text>
         </View>
-        <View>
-          <Image />
-          <Entypo name="controller-play" size={24} color="black" />
+        <View style={styles.video_button}>
+          <Image style={styles.video_image} source={experince.bgImg} />
+          <Entypo style={styles.video_image_icon} name="controller-play" size={40} color="black" />
         </View>
       </View>
     </View>
@@ -26,6 +26,11 @@ export default function ExperienceCard({ experince }) {
 }
 
 const styles = StyleSheet.create({
+  blue_point_container: {
+    backgroundColor: 'white',
+    width: 20,
+    height: 20,
+  },
   blue_point: {
     borderRadius: 60,
     backgroundColor: "#add8e6",
@@ -33,6 +38,9 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     marginHorizontal: 10,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   experience_card: {
     flex: 4,
@@ -40,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     marginHorizontal: 10,
-    marginVertical: 5,
+    marginVertical: 3,
     borderRadius: 30,
     backgroundColor: "white",
     shadowColor: "#000",
@@ -54,6 +62,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 20,
+    
   },
   card_title: {
     fontSize: 12,
@@ -68,10 +77,31 @@ const styles = StyleSheet.create({
     color: "gray",
   },
   experience_card_container: {
-    marginVertical: 10,
     marginHorizontal: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
+  video_button: {
+    borderColor: 'white',
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderRadius: 50, 
+    width: 70,
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  video_image: {
+    position: 'relative',
+    width: '100%', 
+    height: '100%',
+    borderRadius: 50,
+  },
+  video_image_icon: {
+    position: 'absolute',
+    color: 'white',
+  }
 });

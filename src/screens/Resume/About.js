@@ -15,7 +15,6 @@ import { MOCK_EXPERIENCE_CONFIG } from "../../components/ExperienceCard/Experien
 const SoftSkillsConfig = require("../../components/SkillsCard/SoftSkills.json");
 
 export default function About() {
-  console.log(BIO_MOCK_DATA);
   return (
     <View>
       {/* Here it goes The Title Section */}
@@ -57,9 +56,15 @@ export default function About() {
       </View>
 
       {/* Here it goes the experience card component */}
-      {MOCK_EXPERIENCE_CONFIG.map((item, index) => (
-        <ExperienceCard experince={item} key={index} />
-      ))}
+      <View style={styles.experience_section_container}>
+       
+        {MOCK_EXPERIENCE_CONFIG.map((item, index) => (
+          <TouchableOpacity style={styles.experience_section} key={index}>
+            <ExperienceCard experince={item} />
+            <View style={styles.experience_section_line}></View>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
   );
 }
@@ -98,5 +103,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  experience_section_line: {
+    width: 1,
+    height: '75%',
+    backgroundColor: "black",
+    marginLeft: 25,
+    position: 'absolute',
+    marginTop: 65,
   },
 });

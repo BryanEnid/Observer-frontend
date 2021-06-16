@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   card: {
     justifyContent: 'center',
     alignItems: "center",
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     marginVertical: 5,
     borderRadius: 10,
     backgroundColor: "white",
@@ -32,8 +32,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginBottom: 20,
     borderRadius: 20,
+    width: 70,
+    height: 70,
   },
   skill: {
-      fontSize: 11,
+      fontSize: 10,
+      marginTop: 2,
   }
 });
