@@ -1,11 +1,11 @@
-import Audio from '../Audio';
+import Buckets from '../Buckets';
 import Recommends from '../Recommends';
 import Resume from '../Resume';
 
 export default [
   {
-    title: 'Audio',
-    component: Audio,
+    title: 'Buckets',
+    component: Buckets,
   },
   {
     title: 'Resume',
@@ -16,3 +16,4 @@ export default [
     component: Recommends,
   },
 ];
+
