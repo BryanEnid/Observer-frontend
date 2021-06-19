@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Animated } from 'react-native';
-import CircularProgress from './Graphic';
+import React, { Component } from "react";
+import { Animated } from "react-native";
+import CircularProgress from "./Graphic";
 
 const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress);
 

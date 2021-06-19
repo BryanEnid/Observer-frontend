@@ -1,19 +1,18 @@
-import Buckets from '../Buckets';
-import Recommends from '../Recommends';
-import Resume from '../Resume';
+import Buckets from "../Buckets";
+import Recommends from "../Recommends";
+import Resume from "../Resume";
 
 export default [
   {
-    title: 'Buckets',
+    title: "Buckets",
     component: Buckets,
   },
   {
-    title: 'Resume',
+    title: "Resume",
     component: Resume,
   },
   {
-    title: 'Recommends',
+    title: "Recommends",
     component: Recommends,
   },
 ];
-
