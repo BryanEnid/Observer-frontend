@@ -12,6 +12,11 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "ignorePatterns": [
+    "/src/components/ConicalGradient/**",
+    "/src/components/Portal/**",
+    "*.test.js"
+  ],
   "parser": "@babel/eslint-parser",
   "plugins": ["react", "@babel"],
   "rules": {
@@ -20,7 +25,11 @@
     "no-restricted-syntax": "off",
     "no-trailing-spaces": "off",
     "consistent-return": "off",
-    "react/jsx-filename-extension": [1, { "allow": "as-needed" }],
-    "import/prefer-default-export": [1, { "allow": "as-needed" }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": [0],
+    "react/jsx-props-no-spreading": [0],
+    "react/jsx-one-expression-per-line": [0],
+    "comma-dangle": "off",
+    "prefer-default-export": "off"
   }
 }
