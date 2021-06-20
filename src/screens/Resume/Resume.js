@@ -5,7 +5,7 @@ import { Text } from '../../components';
 export default function Resume() {
   return (
     <View>
-      <Text>asd</Text>
+      <Text>Resume</Text>
     </View>
   );
 }
