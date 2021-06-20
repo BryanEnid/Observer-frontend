@@ -12,7 +12,7 @@ import {
 import ActionSheet from 'react-native-actions-sheet';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../components';
-import { NavigationController } from '../../controllers';
+import { Navigation } from '../../controllers';
 import DummyData from '../../controllers/DummyDataController';
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
@@ -44,24 +44,6 @@ const styles = StyleSheet.create({
   footer: {
     height: 100,
   },
-  btn: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#fe8a71',
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    elevation: 5,
-    shadowColor: 'black',
-    shadowOffset: { width: 0.3 * 4, height: 0.5 * 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 0.7 * 4,
-  },
-  btnTitle: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
 });
 
 function Header({ profile, user, video: videoURI }) {
@@ -81,7 +63,7 @@ function Header({ profile, user, video: videoURI }) {
   }, []);
 
   const handleProfileVideo = useCallback(() => {
-    NavigationController.navigate('ProfileVideo', { uri: videoURI });
+    Navigation.navigate('ProfileVideo', { uri: videoURI });
   }, []);
 
   const handleProfileOption = useCallback(() => {
@@ -178,8 +160,9 @@ export default function Profile() {
         setVideo(profileVideo);
         setProfile(profileDetails);
       } catch (e) {
-        // return console.error(e);
-        // setProfile(profileMock);
+        // console.log(e.message);
+        // console.log(e);
+        setProfile(profileMock);
       }
     })();
   }, []);
@@ -191,23 +174,21 @@ export default function Profile() {
 
         <Sticky profile={profile} />
 
-        <View>
-          {/* See Carrousel Component for logic
+        {/* See Carrousel Component for logic
           See CarrouselScreensSetup for registering screens */}
-          {/* <Portal name="ProfileCarouselScreens" /> */}
-          <FlatList
-            data={elements}
-            onMomentumScrollEnd={(ev) => {
-              const newIndex = Math.floor(ev.nativeEvent.contentOffset.x / width);
-              activeIndex.setValue(newIndex);
-            }}
-            horizontal
-            pagingEnabled
-            initialScrollIndex={selectedItemIndex}
-            getItemLayout={(_, index) => ({ length: width, offset: width * index, index })}
-            renderItem={() => {}}
-          />
-        </View>
+        {/* <Portal name="ProfileCarouselScreens" /> */}
+        <FlatList
+          data={elements}
+          onMomentumScrollEnd={(ev) => {
+            const newIndex = Math.floor(ev.nativeEvent.contentOffset.x / width);
+            activeIndex.setValue(newIndex);
+          }}
+          horizontal
+          pagingEnabled
+          initialScrollIndex={selectedItemIndex}
+          getItemLayout={(_, index) => ({ length: width, offset: width * index, index })}
+          renderItem={() => {}}
+        />
       </ScrollView>
     </View>
   );

@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import { Text, PortalContext } from '..';
+import Text from '../Text';
+import { PortalContext } from '../Portal';
 
 const styles = StyleSheet.create({
   button: {
-    paddingLeft: 35,
-    paddingRight: 35,
+    paddingHorizontal: 35,
+    paddingVertical: 10,
+    backgroundColor: 'red',
   },
 });
 
