@@ -35,24 +35,6 @@ const styles = StyleSheet.create({
   footer: {
     height: 100,
   },
-  btn: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#fe8a71',
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    elevation: 5,
-    shadowColor: 'black',
-    shadowOffset: { width: 0.3 * 4, height: 0.5 * 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 0.7 * 4,
-  },
-  btnTitle: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
 });
 
 function Header({ profile, user, video: videoURI }) {
@@ -177,11 +159,9 @@ export default function Profile() {
 
         <Sticky profile={profile} />
 
-        <View>
-          {/* See Carrousel Component for logic
+        {/* See Carrousel Component for logic
           See CarrouselScreensSetup for registering screens */}
-          <Portal name="ProfileCarouselScreens" />
-        </View>
+        <Portal name="ProfileCarouselScreens" />
       </ScrollView>
     </View>
   );
