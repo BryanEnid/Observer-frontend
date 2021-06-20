@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } f
 import ActionSheet from 'react-native-actions-sheet';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../components';
-import { NavigationController } from '../../controllers';
+import { Navigation } from '../../controllers';
 import DummyData from '../../controllers/DummyDataController';
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
@@ -72,7 +72,7 @@ function Header({ profile, user, video: videoURI }) {
   }, []);
 
   const handleProfileVideo = useCallback(() => {
-    NavigationController.navigate('ProfileVideo', { uri: videoURI });
+    Navigation.navigate('ProfileVideo', { uri: videoURI });
   }, []);
 
   const handleProfileOption = useCallback(() => {
@@ -163,9 +163,9 @@ export default function Profile() {
         setVideo(profileVideo);
         setProfile(profileDetails);
       } catch (e) {
-        console.log(e.message);
-        console.log(e);
-        // setProfile(profileMock);
+        // console.log(e.message);
+        // console.log(e);
+        setProfile(profileMock);
       }
     })();
   }, []);

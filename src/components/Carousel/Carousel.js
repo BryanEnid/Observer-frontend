@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import { Text, PortalContext } from '..';
+import Text from '../Text';
+import { PortalContext } from '../Portal';
 
 const styles = StyleSheet.create({
   button: {
