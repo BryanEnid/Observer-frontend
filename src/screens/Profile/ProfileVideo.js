@@ -1,29 +1,6 @@
 import React, { useRef } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import { Video, AVPlaybackStatus } from 'expo-av';
-
-export default function ProfileVideo({ route, children }) {
-  const { uri } = route.params;
-  const video = useRef(null);
-
-  return (
-    <View style={styles.container}>
-      <Video
-        ref={video}
-        style={styles.video}
-        source={{ uri }}
-        resizeMode="contain"
-        isLooping
-        onLayout={() => video.current.playAsync()}
-        resizeMode={Video.RESIZE_MODE_STRETCH}
-        volume={1}
-
-        // useNativeControls
-        // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-      />
-    </View>
-  );
-}
+import { View, StyleSheet } from 'react-native';
+import { Video } from 'expo-av';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,3 +14,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+export default function ProfileVideo({ route }) {
+  const { uri } = route.params;
+  const video = useRef(null);
+
+  return (
+    <View style={styles.container}>
+      <Video
+        ref={video}
+        style={styles.video}
+        source={{ uri }}
+        resizeMode={Video.RESIZE_MODE_COVER}
+        isLooping
+        onLayout={() => video.current.playAsync()}
+        volume={100}
+        useNativeControls
+        // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      />
+    </View>
+  );
+}
