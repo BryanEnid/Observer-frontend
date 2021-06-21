@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SKILLS_CONFIG } from "../../components/SkillsCard/SkillsMockData";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import {
@@ -15,6 +15,7 @@ import { MOCK_EXPERIENCE_CONFIG } from "../../components/ExperienceCard/Experien
 const SoftSkillsConfig = require("../../components/SkillsCard/SoftSkills.json");
 
 export default function About() {
+  const [showExperienceDetails, setShowExperienceDetails] = useState(false);
   return (
     <View>
       {/* Here it goes The Title Section */}
@@ -59,8 +60,8 @@ export default function About() {
       <View style={styles.experience_section_container}>
        
         {MOCK_EXPERIENCE_CONFIG.map((item, index) => (
-          <TouchableOpacity style={styles.experience_section} key={index}>
-            <ExperienceCard experince={item} />
+          <TouchableOpacity onPress={() => setShowExperienceDetails(true)} style={styles.experience_section} key={index}>
+            <ExperienceCard showDetail={showExperienceDetails} setShowDetail={setShowExperienceDetails} experince={item} />
             <View style={styles.experience_section_line}></View>
           </TouchableOpacity>
         ))}

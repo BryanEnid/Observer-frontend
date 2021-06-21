@@ -14,6 +14,9 @@ export default function ({ content }) {
       <Text style={styles.lineBreak}>
           {content.landingLink}
       </Text>
+      <Text style={styles.expand_button}>
+        Expand
+      </Text>
     </View>
   );
 }
@@ -36,8 +39,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginBottom: 20,
   },
-
   lineBreak: {
       marginBottom: 5,
+  },
+  expand_button: {
+    color: '#add8e6',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginTop: 10
   }
 });
