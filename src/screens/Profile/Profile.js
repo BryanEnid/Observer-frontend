@@ -15,7 +15,6 @@ import DummyData from '../../controllers/DummyDataController';
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
 import Header from './Header';
-import screens from '..';
 
 const screenWidth = Dimensions.get('window').width;
 
