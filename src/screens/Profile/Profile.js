@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { View, Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { ConicalGradient, Carousel, Text, Divider, Portal } from '../../components';
-import { NavigationController } from '../../controllers';
+import { Navigation } from '../../controllers';
 import DummyData from '../../controllers/DummyDataController';
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
 
 // Platform Fixes
-import { getStatusBarHeight } from 'react-native-status-bar-height';
 const statusBarHeight = getStatusBarHeight();
 
 // Styles
@@ -35,27 +35,9 @@ const styles = StyleSheet.create({
   footer: {
     height: 100,
   },
-  btn: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#fe8a71',
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    elevation: 5,
-    shadowColor: 'black',
-    shadowOffset: { width: 0.3 * 4, height: 0.5 * 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 0.7 * 4,
-  },
-  btnTitle: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
 });
 
-function Header({ profile, user, video: videoURI, navigation }) {
+function Header({ profile, user, video: videoURI }) {
   const actionSheetRef = useRef();
   const scrollViewRef = useRef();
 
@@ -72,7 +54,7 @@ function Header({ profile, user, video: videoURI, navigation }) {
   }, []);
 
   const handleProfileVideo = useCallback(() => {
-    NavigationController.navigate('ProfileVideo', { uri: videoURI });
+    Navigation.navigate('ProfileVideo', { uri: videoURI });
   }, []);
 
   const handleProfileOption = useCallback(() => {
@@ -104,9 +86,6 @@ function Header({ profile, user, video: videoURI, navigation }) {
         ref={actionSheetRef}
         onOpen={onOpen}
         statusBarTranslucent
-        bounceOnOpen={true}
-        bounciness={4}
-        gestureEnabled={true}
         onClose={onClose}
         defaultOverlayOpacity={0.3}
       >
@@ -166,9 +145,9 @@ export default function Profile() {
         setVideo(profileVideo);
         setProfile(profileDetails);
       } catch (e) {
-        console.log(e.message);
-        console.log(e);
-        // setProfile(profileMock);
+        // console.log(e.message);
+        // console.log(e);
+        setProfile(profileMock);
       }
     })();
   }, []);
@@ -180,11 +159,9 @@ export default function Profile() {
 
         <Sticky profile={profile} />
 
-        <View>
-          {/* See Carrousel Component for logic
+        {/* See Carrousel Component for logic
           See CarrouselScreensSetup for registering screens */}
-          <Portal name="ProfileCarouselScreens" />
-        </View>
+        <Portal name="ProfileCarouselScreens" />
       </ScrollView>
     </View>
   );
