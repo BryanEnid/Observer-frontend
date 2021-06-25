@@ -35,11 +35,7 @@
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-<<<<<<< HEAD
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-=======
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
->>>>>>> c86bab60e6520ffafad548f4abb28347c3396ad6
     "react-native-actions-sheet": "^0.4.9",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-reanimated": "~2.1.0",
