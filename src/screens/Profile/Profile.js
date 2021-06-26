@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   profile_username: { textAlign: 'center' },
   screens: {
     width: subScreenSize.width,
-    height: subScreenSize.width, // TODO: remove this
+    paddingHorizontal: 20,
+    paddingBottom: 10,
   },
   carrousel: {
     flexDirection: 'row',

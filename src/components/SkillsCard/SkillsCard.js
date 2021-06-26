@@ -1,42 +1,32 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Text } from "..";
+import React from 'react';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { Text, Card } from '..';
 
-export default function ({ items }) {
-  return (
-    <>
-      {items.map((item, index) => (
-        <View style={styles.card} key={index}>
+const { width } = Dimensions.get('screen');
+const SPACING = 25;
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  card: {
+    width: width / 4 - SPACING,
+    height: 80,
+  },
+});
+
+export default ({ items }) => (
+  <>
+    {items.map((item) => (
+      <Card key={item.skill.trim().toLowerCase()} style={styles.card}>
+        <View style={styles.root}>
           {item.image}
           <Text style={styles.skill}>{item.skill}</Text>
         </View>
-      ))}
-    </>
-  );
-}
-
-const styles = StyleSheet.create({
-  card: {
-    justifyContent: 'center',
-    alignItems: "center",
-    marginHorizontal: 5,
-    marginVertical: 5,
-    borderRadius: 10,
-    backgroundColor: "white",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    marginBottom: 20,
-    borderRadius: 20,
-    width: 70,
-    height: 70,
-  },
-  skill: {
-      fontSize: 10,
-      marginTop: 2,
-  }
-});
+      </Card>
+    ))}
+  </>
+);

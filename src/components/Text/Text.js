@@ -10,7 +10,7 @@ function getStylesFromVariant(variant) {
       return { fontSize: 19, fontFamily: 'Quicksand_700' };
     }
     case 'h3': {
-      break;
+      return { fontSize: 14, fontFamily: 'Quicksand_600' };
     }
     case 'h4': {
       break;
@@ -37,7 +37,7 @@ function getStylesFromVariant(variant) {
       return { fontSize: 14, fontFamily: 'Quicksand_300' };
     }
     case 'button': {
-      break;
+      return { fontSize: 14, fontFamily: 'Quicksand_600', color: '#1CB9FE' };
     }
     default: {
       return { fontSize: 12, fontFamily: 'Quicksand_400' };
@@ -45,8 +45,8 @@ function getStylesFromVariant(variant) {
   }
 }
 
-function getColorsFromTheme(colors) {
-  return { ...colors };
+function getColorsFromTheme(color) {
+  if (color) return { color };
 }
 
 export default function Text({ variant, color, children, style, ...rest }) {
