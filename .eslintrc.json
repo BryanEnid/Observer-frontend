@@ -30,6 +30,22 @@
     "react/jsx-props-no-spreading": [0],
     "react/jsx-one-expression-per-line": [0],
     "comma-dangle": "off",
-    "prefer-default-export": "off"
+    "prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [0],
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          {
+            "char": ">",
+            "alternatives": ["&gt;"]
+          },
+          {
+            "char": "}",
+            "alternatives": ["&#125;"]
+          }
+        ]
+      }
+    ]
   }
 }

@@ -1,0 +1,18 @@
+[
+    {
+        "skill": "JavaScript",
+        "image": "../../assets/js.jpg"
+    },
+    {
+        "skill": "ReactJS",
+        "image": "./assets/js.jpg"
+    },
+    {
+        "skill": "HTML5",
+        "image": "./assets/js.jpg"
+    },
+    {
+        "skill": "Java",
+        "image":"./assets/js.jpg"
+    }
+]

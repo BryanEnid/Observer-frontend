@@ -1,11 +1,12 @@
-import React, { useRef, useCallback } from 'react';
-import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import React, { useRef, useCallback, useEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { Text, ConicalGradient } from '../../components';
 import Navigation from '../../controllers/NavigationController';
 
 const statusBarHeight = getStatusBarHeight();
+const isAndroid = Platform.OS === 'android';
 
 // Styles
 const profileSize = { width: 180, height: 180, padding: 20 };
@@ -14,9 +15,9 @@ const styles = StyleSheet.create({
   profile_container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: statusBarHeight,
+    marginTop: isAndroid ? statusBarHeight : null,
   },
-  profile_item: { marginBottom: 10 },
+  profile_item: { marginBottom: 20 },
   profile_picture: {
     width: profileSize.width - profileSize.padding,
     aspectRatio: 1,
@@ -46,7 +47,7 @@ export default function Header({ profile, user, video: videoURI }) {
 
   const handleProfileVideo = useCallback(() => {
     Navigation.navigate('ProfileVideo', { uri: videoURI });
-  }, []);
+  }, [videoURI]);
 
   const handleProfileOption = useCallback(() => {
     actionSheetRef.current?.show();
@@ -55,15 +56,13 @@ export default function Header({ profile, user, video: videoURI }) {
   return (
     <>
       <View style={styles.profile_container}>
-        <SafeAreaView>
-          <TouchableOpacity onPress={handleProfileVideo} onLongPress={handleProfileOption}>
-            <View style={[{ height: profileSize.height }, styles.profile_item]}>
-              <ConicalGradient>
-                <Image source={{ uri: profile?.picture?.large }} style={styles.profile_picture} />
-              </ConicalGradient>
-            </View>
-          </TouchableOpacity>
-        </SafeAreaView>
+        <TouchableOpacity onPress={handleProfileVideo} onLongPress={handleProfileOption}>
+          <View style={[{ height: profileSize.height }, styles.profile_item]}>
+            <ConicalGradient>
+              <Image source={{ uri: profile?.picture?.large }} style={styles.profile_picture} />
+            </ConicalGradient>
+          </View>
+        </TouchableOpacity>
 
         <View>
           <Text variant="caption" style={styles.profile_description}>

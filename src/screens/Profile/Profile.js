@@ -8,6 +8,7 @@ import {
   Animated,
   Dimensions,
   Easing,
+  SafeAreaView,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Text, Divider } from '../../components';
@@ -25,13 +26,14 @@ const carrouselItemSize = { width: 100 };
 // const { width, height, padding } = profileSize;
 const styles = StyleSheet.create({
   profile_name: {
-    paddingTop: 44,
+    marginTop: 15,
     textAlign: 'center',
   },
   profile_username: { textAlign: 'center' },
   screens: {
     width: subScreenSize.width,
-    height: subScreenSize.width, // TODO: remove this
+    paddingHorizontal: 20,
+    paddingBottom: 10,
   },
   carrousel: {
     flexDirection: 'row',
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
   carrousel_item: {
     width: carrouselItemSize.width,
     textAlign: 'center',
-    paddingVertical: 10,
+    paddingVertical: 5,
   },
 });
 
@@ -51,7 +53,6 @@ export default function Profile() {
   const [video, setVideo] = useState({});
   const subScreens = useRef(null);
 
-  const threshold = useRef(false);
   const activeIndex = useRef(new Animated.Value(0)).current;
   const activeIndexAnimation = useRef(new Animated.Value(0)).current;
   const [user] = useState({
@@ -92,7 +93,11 @@ export default function Profile() {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <ScrollView stickyHeaderIndices={[1]}>
+      <ScrollView
+        stickyHeaderIndices={[1]}
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={{ marginTop: 25 }}
+      >
         <Header profile={profile} user={user} video={video} />
 
         <View style={{ justifyContent: 'center', backgroundColor: 'white' }}>
@@ -100,7 +105,7 @@ export default function Profile() {
             <Text variant="h2" style={styles.profile_name}>
               {profile.name.first} {profile.name.last}
             </Text>
-            <Text variant="caption" style={styles.profile_username}>
+            <Text variant="button" style={styles.profile_username}>
               @{profile.login.username}
             </Text>
           </View>
@@ -143,12 +148,14 @@ export default function Profile() {
             index,
           })}
           keyExtractor={(item) => item.title.trim().toLowerCase()}
+          // contentInsetAdjustmentBehavior="automatic"
           renderItem={({ item: { component: Component } }) => (
             <View style={styles.screens}>
               <Component />
             </View>
           )}
         />
+        <SafeAreaView />
       </ScrollView>
     </View>
   );
