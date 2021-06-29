@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { Text, Card } from '..';
+
+const { width } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   blue_point_container: {
     borderRadius: 50,
-    // borderColor: 'red',
     backgroundColor: '#C5E4FF',
-    // padding: 5,
-    height: 15,
-    width: 15,
+    height: 13,
+    width: 13,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   experience_card: {
+    flex: 5,
     flexDirection: 'row',
   },
   card_title: {
@@ -112,159 +113,137 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ExperienceCard({ experience, showDetail, setShowDetail, cardStyle }) {
+export default function ExperienceCard({
+  experience,
+  showDetail,
+  setShowDetail,
+  cardStyle,
+  index,
+}) {
+  const saveLayout = (event) => {
+    const { height } = event.nativeEvent.layout;
+    console.log(height);
+    console.log(index);
+  };
+
   return (
-    <View style={styles.experience_card_container}>
-      {/* Column 1 */}
-      <View style={styles.blue_point_separator}>
-        <View style={styles.blue_point_container}>
-          <View style={styles.blue_point} />
-        </View>
-      </View>
-
-      {/* Column 2 */}
-      <Card style={[styles.experience_card, cardStyle]}>
-        <View style={{ flexDirection: 'column', flex: 1 }}>
-          {/* Row 1 */}
-          <View style={{ flexDirection: 'row' }}>
-            {/* Column A.1 */}
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              {experience.icon}
-            </View>
-
-            {/* Column A.2 */}
-            <View style={{ flex: 3, justifyContent: 'center' }}>
-              <View>
-                <Text variant="h3">{experience.title}</Text>
-                <Text>{experience.company}</Text>
-                <Text style={{ fontFamily: 'Quicksand_300' }}>{experience.period}</Text>
-              </View>
-            </View>
-
-            {/* Column A.3 */}
-            <View style={{ flex: 2 }}>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Image style={styles.video_image} source={experience.bgImg} />
-                <Entypo
-                  style={{
-                    position: 'absolute',
-                    color: 'white',
-                  }}
-                  name="controller-play"
-                  size={40}
-                  color="black"
-                />
-              </View>
+    <>
+      {/* <View
+        style={{
+          // position: 'absolute',
+          zIndex: 10,
+          width,
+          // justifyContent: 'center',
+          // alignItems: 'center',
+        }}
+      >
+        <View style={{ backgroundColor: 'red', flex: 1 }}>
+          <View style={styles.blue_point_separator}>
+            <View style={styles.blue_point_container}>
+              <View style={styles.blue_point} />
             </View>
           </View>
+        </View>
 
-          {/* Row 2 */}
-          {showDetail && (
-            <>
-              <View style={{ flexDirection: 'row' }}>
-                <View style={{ flex: 1 }} />
-                <View style={{ flex: 5, flexDirection: 'column' }}>
-                  <View style={{ flexDirection: 'row', marginBottom: 10, marginTop: 20 }}>
-                    <Text variant="h3">Involvement</Text>
-                  </View>
+        <View style={{ flex: 1, backgroundColor: 'red' }} />
+      </View> */}
 
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <View>
-                      <Text>CS Club President</Text>
-                      <Text>Honors Society</Text>
-                      <Text>Calculus Tutor</Text>
-                      <Text>Pike Fraternity</Text>
-                      <Text>President's List</Text>
-                    </View>
+      <View style={styles.experience_card_container}>
+        <Card style={[styles.experience_card, cardStyle]} onLayout={saveLayout}>
+          <View style={{ flexDirection: 'column', flex: 1 }}>
+            {/* Row 1 */}
+            <View style={{ flexDirection: 'row' }}>
+              {/* Column A.1 */}
+              <View
+                style={{
+                  flex: 1,
+                  paddingRight: 5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {experience.icon}
+              </View>
 
-                    <View style={{ alignItems: 'flex-end' }}>
-                      <Text>Spring 1982</Text>
-                      <Text>1980-1984</Text>
-                      <Text>Fall 1984</Text>
-                      <Text>1980-1984</Text>
-                      <Text>Spring 1980, Fall 1981</Text>
-                    </View>
+              {/* Column A.2 */}
+              <View style={{ flex: 3, justifyContent: 'center' }}>
+                <View>
+                  <Text variant="h3">{experience.title}</Text>
+                  <Text>{experience.company}</Text>
+                  <Text style={{ fontFamily: 'Quicksand_300' }}>{experience.period}</Text>
+                </View>
+              </View>
+
+              {/* Column A.3 */}
+              <View style={{ flex: 2 }}>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'flex-end',
+                  }}
+                >
+                  <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Image style={styles.video_image} source={experience.bgImg} />
+                    <Entypo
+                      style={{
+                        position: 'absolute',
+                        color: 'white',
+                      }}
+                      name="controller-play"
+                      size={40}
+                      color="black"
+                    />
                   </View>
                 </View>
               </View>
-              <TouchableOpacity
-                style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}
-              >
-                <Text
-                  variant="button"
-                  style={{ flex: 1, textAlign: 'center', marginVertical: 5 }}
-                  onPress={() => setShowDetail(false)}
-                >
-                  Close
-                </Text>
-              </TouchableOpacity>
-            </>
-          )}
-        </View>
-      </Card>
-    </View>
-  );
-
-  // eslint-disable-next-line no-unreachable
-  return (
-    <View style={styles.experience_card_container}>
-      <View style={styles.blue_point_separator}>
-        <View style={styles.blue_point_container}>
-          <View style={styles.blue_point} />
-        </View>
-      </View>
-
-      <Card style={[styles.experience_card, cardStyle]}>
-        <View style={styles.experience_info}>
-          {experience.icon}
-
-          <View>
-            <Text style={styles.card_title}>{experience.title}</Text>
-            <Text style={styles.card_subtitle}>{experience.company}</Text>
-            <Text style={styles.card_timing}>{experience.period}</Text>
-          </View>
-          <View style={styles.video_button}>
-            <Image style={styles.video_image} source={experience.bgImg} />
-            <Entypo
-              style={styles.video_image_icon}
-              name="controller-play"
-              size={40}
-              color="black"
-            />
-          </View>
-        </View>
-
-        {showDetail && (
-          <>
-            <Text style={styles.involvement_title}>Involvement</Text>
-            <View style={styles.involvement_container}>
-              <View style={styles.position_column}>
-                <Text>CS Club President</Text>
-                <Text>Honors Society</Text>
-                <Text>Calculus Tutor</Text>
-                <Text>Pike Fraternity</Text>
-                <Text>President's List</Text>
-              </View>
-              <View style={styles.period_column}>
-                <Text>Spring 1982</Text>
-                <Text>1980-1984</Text>
-                <Text>Fall 1984</Text>
-                <Text>1980-1984</Text>
-                <Text>Spring 1980, Fall 1981</Text>
-              </View>
             </View>
-            <TouchableOpacity onPress={() => setShowDetail(false)} style={styles.close_button}>
-              <Text style={styles.close_button_tag}>Close</Text>
-            </TouchableOpacity>
-          </>
-        )}
-      </Card>
-    </View>
+
+            {/* Row 2 */}
+            {showDetail && (
+              <>
+                <View style={{ flexDirection: 'row' }}>
+                  <View style={{ flex: 1 }} />
+                  <View style={{ flex: 5, flexDirection: 'column' }}>
+                    <View style={{ flexDirection: 'row', marginBottom: 10, marginTop: 20 }}>
+                      <Text variant="h3">Involvement</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                      <View>
+                        <Text>CS Club President</Text>
+                        <Text>Honors Society</Text>
+                        <Text>Calculus Tutor</Text>
+                        <Text>Pike Fraternity</Text>
+                        <Text>President's List</Text>
+                      </View>
+
+                      <View style={{ alignItems: 'flex-end', paddingRight: 20 }}>
+                        <Text>Spring 1982</Text>
+                        <Text>1980-1984</Text>
+                        <Text>Fall 1984</Text>
+                        <Text>1980-1984</Text>
+                        <Text>Spring 1980, Fall 1981</Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <TouchableWithoutFeedback
+                  style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}
+                >
+                  <Text
+                    variant="button"
+                    style={{ flex: 1, textAlign: 'center', marginTop: 10 }}
+                    onPress={() => setShowDetail(false)}
+                  >
+                    Close
+                  </Text>
+                </TouchableWithoutFeedback>
+              </>
+            )}
+          </View>
+        </Card>
+      </View>
+    </>
   );
 }

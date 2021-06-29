@@ -17,4 +17,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({ children, style }) => <View style={[styles.card, style]}>{children}</View>;
+export default ({ children, style, ...rest }) => (
+  <View style={[styles.card, style]} {...rest}>
+    {children}
+  </View>
+);

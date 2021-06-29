@@ -12,8 +12,7 @@ const SoftSkillsConfig = require('../../components/SkillsCard/SoftSkills.json');
 
 const styles = StyleSheet.create({
   titleSection: {
-    marginTop: 10,
-    marginHorizontal: 10,
+    marginTop: 20,
     marginBottom: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -33,8 +32,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   experience_title_section: {
-    marginTop: 40,
-    marginHorizontal: 10,
     marginBottom: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -42,12 +39,10 @@ const styles = StyleSheet.create({
   },
   experience_section_line: {
     position: 'absolute',
-    top: 0,
-    left: -13,
+    alignSelf: 'center',
     width: 1,
     height: '100%',
-    backgroundColor: 'black',
-    marginLeft: 25,
+    backgroundColor: '#999',
   },
   lineBreak: {
     marginBottom: 5,
@@ -56,84 +51,106 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
   },
+  blue_point_container: {
+    borderRadius: 50,
+    backgroundColor: '#C5E4FF',
+    height: 13,
+    width: 13,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  blue_point: {
+    borderRadius: 5,
+    backgroundColor: '#1CB9FE',
+    height: 8,
+    width: 8,
+  },
+  blue_point_separator: {
+    borderRadius: 50,
+    backgroundColor: 'white',
+    height: 25,
+    width: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default function Resume() {
   return (
     <View>
       <View name="About Section">
-        {/* <View style={styles.titleSection}>
-        <Text variant="h2">About</Text>
-        <Text variant="button">Values & Goals</Text>
-      </View> */}
+        <View style={styles.titleSection}>
+          <Text variant="h1">About</Text>
+          <Text variant="button">Values & Goals</Text>
+        </View>
 
-        {/* Here it goes the Plain Card Component */}
-        {/* <Card style={{ paddingTop: 30 }}>
-        <Text style={styles.lineBreak}>{BIO_MOCK_DATA.lineOne}</Text>
-        <Text style={styles.lineBreak}>{BIO_MOCK_DATA.lineTwo}</Text>
-        <Text style={styles.lineBreak}>{BIO_MOCK_DATA.landingLink}</Text>
-        <Text style={styles.expand_button} variant="button">
-          Expand
-        </Text>
-      </Card> */}
+        <Card style={{ paddingTop: 30 }}>
+          <Text style={styles.lineBreak}>{BIO_MOCK_DATA.lineOne}</Text>
+          <Text style={styles.lineBreak}>{BIO_MOCK_DATA.lineTwo}</Text>
+          <Text style={styles.lineBreak}>{BIO_MOCK_DATA.landingLink}</Text>
+          <Text style={styles.expand_button} variant="button">
+            Expand
+          </Text>
+        </Card>
       </View>
 
-      <View name="Skill Section">
-        {/* <View style={styles.titleSection}>
-          <Text variant="h2">Skills</Text>
+      <View style={styles.titleSection}>
+        <Text variant="h1">Skills</Text>
+        <Text style={styles.moreDetailsLink} variant="button">
+          View all
+        </Text>
+      </View>
+      <View style={styles.skillsCardsContainer}>
+        <SkillsCard items={SKILLS_CONFIG} />
+      </View>
+      <View style={styles.skillsCardsContainer}>
+        <SoftSkillsCard items={SoftSkillsConfig} />
+      </View>
+      <View style={styles.hiddenSection}>
+        <TouchableOpacity>
+          <MaterialIcons name="keyboard-arrow-down" size={40} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <View name="Experience Section">
+        <View style={styles.experience_title_section}>
+          <Text variant="h1">Experience</Text>
           <Text style={styles.moreDetailsLink} variant="button">
             View all
           </Text>
         </View>
 
-         // marginBottom: 20,
-        <View style={styles.skillsCardsContainer}>
-          <SkillsCard items={SKILLS_CONFIG} />
-        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 1, paddingTop: '30%', justifyContent: 'center' }}>
+            <View style={styles.experience_section_line} />
+          </View>
 
-        <View style={styles.skillsCardsContainer}>
-          <SoftSkillsCard items={SoftSkillsConfig} />
-        </View>
+          <View style={{ flex: 8 }}>
+            {MOCK_EXPERIENCE_CONFIG.map((item, index) => {
+              const isNotWrapper = (i) => {
+                if (i === 0 || i === MOCK_EXPERIENCE_CONFIG.length - 1) return false;
+                return true;
+              };
 
-        <View style={styles.hiddenSection}>
-          <TouchableOpacity>
-            <MaterialIcons name="keyboard-arrow-down" size={40} color="black" />
-          </TouchableOpacity>
-        </View> */}
-      </View>
-
-      {/* Here it goes the experience section */}
-      <View name="Experience Section">
-        <View style={styles.experience_title_section}>
-          <Text variant="h3">Experience</Text>
-          <Text style={styles.moreDetailsLink}>View all</Text>
-        </View>
-
-        {/* Here it goes the experience card component */}
-        <View>
-          <View style={styles.experience_section_line} />
-          {MOCK_EXPERIENCE_CONFIG.map((item, index) => {
-            const isNotWrapper = (i) => {
-              if (i === 0 || i === MOCK_EXPERIENCE_CONFIG.length - 1) return false;
-              return true;
-            };
-
-            const [showExperienceDetails, setShowExperienceDetails] = useState(false);
-            return (
-              <TouchableOpacity
-                onPress={() => setShowExperienceDetails(true)}
-                style={styles.experience_section}
-                key={item.title.trim().toLowerCase()}
-              >
-                <ExperienceCard
-                  showDetail={showExperienceDetails}
-                  setShowDetail={setShowExperienceDetails}
-                  experience={item}
-                  cardStyle={isNotWrapper(index) && { marginVertical: 20 }}
-                />
-              </TouchableOpacity>
-            );
-          })}
+              const [showExperienceDetails, setShowExperienceDetails] = useState(false);
+              return (
+                <TouchableWithoutFeedback
+                  onPress={() => setShowExperienceDetails(true)}
+                  key={item.title.trim().toLowerCase()}
+                >
+                  <View style={{ flex: 1 }}>
+                    <ExperienceCard
+                      showDetail={showExperienceDetails}
+                      setShowDetail={setShowExperienceDetails}
+                      experience={item}
+                      index={index}
+                      cardStyle={isNotWrapper(index) && { marginVertical: 20 }}
+                    />
+                  </View>
+                </TouchableWithoutFeedback>
+              );
+            })}
+          </View>
         </View>
       </View>
     </View>

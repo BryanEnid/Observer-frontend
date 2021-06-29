@@ -3,9 +3,9 @@ import { View, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   divider: {
-    width: '30%',
-    borderWidth: 1,
-    borderRadius: 1,
+    width: '40%',
+    borderWidth: 0.5,
+    borderRadius: 0.25,
   },
 });
 

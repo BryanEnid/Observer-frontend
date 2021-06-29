@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { Text, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
