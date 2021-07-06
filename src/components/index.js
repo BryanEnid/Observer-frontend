@@ -7,3 +7,5 @@ export { default as SkillsCard } from './SkillsCard';
 export { default as SoftSkillsCard } from './SoftSkillsCard';
 export { default as ExperienceCard } from './ExperienceCard';
 export { PortalProvider, Portal, PortalContext } from './Portal';
+export { default as Certification } from './Certification';
+export { default as Achievement } from './Achievement';
