@@ -156,3 +156,7 @@ export default function Resume() {
     </View>
   );
 }
+
+export function ResumeBottomMenu() {
+  return <Text>Resume Bottom Menu</Text>;
+}

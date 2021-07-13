@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -11,16 +11,16 @@ import {
   SafeAreaView,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
-import { Text, Divider } from '../../components';
+import { Text, Divider, PortalContext } from '../../components';
 import DummyData from '../../controllers/DummyDataController';
 import { profileMock } from './mocks';
 import elements from './CarouselElements';
 import Header from './Header';
 
-const screenWidth = Dimensions.get('window').width;
+const { width, height } = Dimensions.get('window');
 
 // Styles
-const subScreenSize = { width: screenWidth };
+const subScreenSize = { width };
 const carrouselItemSize = { width: 100 };
 
 // const { width, height, padding } = profileSize;
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   carrousel: {
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    marginLeft: screenWidth / 2 - carrouselItemSize.width / 2,
+    marginLeft: width / 2 - carrouselItemSize.width / 2,
   },
   profile_item: { marginBottom: 10 },
   carrousel_item: {
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
 });
 
 export default function Profile() {
+  const { teleport, clean } = useContext(PortalContext);
   const [profile, setProfile] = useState(profileMock);
   const [video, setVideo] = useState({});
   const subScreens = useRef(null);
@@ -74,9 +75,11 @@ export default function Profile() {
         useNativeDriver: true,
       }),
     ]).start();
-  }, []);
+  });
 
   useEffect(() => {
+    const BottomMenu = elements[0].bottomMenu;
+    teleport('BottomMenu', <BottomMenu />);
     (async () => {
       try {
         const profileDetails = (await DummyData.getRandomUsers()).results[0];
@@ -93,11 +96,7 @@ export default function Profile() {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <ScrollView
-        stickyHeaderIndices={[1]}
-        contentInsetAdjustmentBehavior="automatic"
-        contentContainerStyle={{ marginTop: 25 }}
-      >
+      <ScrollView stickyHeaderIndices={[1]} contentInsetAdjustmentBehavior="automatic">
         <Header profile={profile} user={user} video={video} />
 
         <View style={{ justifyContent: 'center', backgroundColor: 'white' }}>
@@ -130,12 +129,18 @@ export default function Profile() {
         </View>
 
         <FlatList
+          // contentContainerStyle={{ height: 300 }}
+          // contentInsetAdjustmentBehavior="automatic"
           data={elements}
           onMomentumScrollEnd={(ev) => {
             const newIndex = Math.floor(ev.nativeEvent.contentOffset.x / subScreenSize.width);
+            console.log('height', ev.nativeEvent);
             // TODO: It should not vibrate when prevIndex is same as activeIndex
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
             activeIndex.setValue(newIndex);
+            const BottomMenu = elements[newIndex]?.bottomMenu;
+            if (BottomMenu) teleport('BottomMenu', <BottomMenu />);
+            if (!BottomMenu) clean('BottomMenu');
           }}
           ref={subScreens}
           showsHorizontalScrollIndicator={false}
@@ -148,7 +153,6 @@ export default function Profile() {
             index,
           })}
           keyExtractor={(item) => item.title.trim().toLowerCase()}
-          // contentInsetAdjustmentBehavior="automatic"
           renderItem={({ item: { component: Component } }) => (
             <View style={styles.screens}>
               <Component />

@@ -1,18 +1,14 @@
-import Audio from '../Audio';
-import Recommends from '../Recommends';
-import Resume from '../Resume';
+import { Recommends, RecommendsBottomMenu } from '../Recommends';
+import { Resume } from '../Resume';
 
 export default [
   {
-    title: 'Audio',
-    component: Audio,
+    title: 'Recommends',
+    component: Recommends,
+    bottomMenu: RecommendsBottomMenu,
   },
   {
     title: 'Resume',
     component: Resume,
-  },
-  {
-    title: 'Recommends',
-    component: Recommends,
   },
 ];

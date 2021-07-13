@@ -3,6 +3,7 @@ import React from 'react';
 export const PortalContext = React.createContext({
   gates: {},
   teleport: () => {},
+  clean: () => {},
 });
 
 export class PortalProvider extends React.Component {
@@ -16,10 +17,14 @@ export class PortalProvider extends React.Component {
 
   teleport = (name, element) => this.setState({ gates: { ...this.state.gates, [name]: element } });
 
+  clean = (name) => this.setState({ gates: { ...this.state.gates, [name]: null } });
+
   render() {
     const { children } = this.props;
     return (
-      <PortalContext.Provider value={{ gates: this.state.gates, teleport: this.teleport }}>
+      <PortalContext.Provider
+        value={{ gates: this.state.gates, teleport: this.teleport, clean: this.clean }}
+      >
         {children}
       </PortalContext.Provider>
     );

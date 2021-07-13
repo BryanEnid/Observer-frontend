@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { Text, TextInput } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { Text, TextInput, LogBox } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import {
   useFonts,
@@ -12,22 +10,19 @@ import {
   Quicksand_400Regular,
   Quicksand_300Light,
 } from '@expo-google-fonts/quicksand';
-import { Profile, ProfileVideo } from './src/screens';
-import { PortalProvider } from './src/components';
-import { navigationRef } from './src/controllers/NavigationController';
+import Routes from './src/navigation/routes';
+import { BottomMenuGate, PortalProvider } from './src/components';
 
-// // Disable Font Scaling
+// Disable unnecessary warnings
+LogBox.ignoreLogs(['Require cycle']);
+
+//  Disable Font Scaling
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 TextInput.defaultProps = TextInput.defaultProps || {};
 TextInput.defaultProps.allowFontScaling = false;
 
-const Stack = createStackNavigator();
-
-const screenConfig = {
-  headerShown: false,
-};
-
+// Fonts
 export default function App() {
   const [fontsLoaded] = useFonts({
     Quicksand_700: Quicksand_700Bold,
@@ -41,12 +36,8 @@ export default function App() {
 
   return (
     <PortalProvider>
-      <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator initialRouteName="Profile" screenOptions={screenConfig}>
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="ProfileVideo" component={ProfileVideo} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Routes />
+      <BottomMenuGate />
     </PortalProvider>
   );
 }

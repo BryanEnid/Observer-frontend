@@ -1,10 +1,10 @@
 import React from 'react';
-import { Articles } from '.';
+import { Text } from '../../components';
 
 export default function Recommends() {
   return (
     <>
-      <Articles />
+      <Text>asdasd</Text>
     </>
   );
 }
