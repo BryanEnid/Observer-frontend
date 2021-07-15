@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from '..';
 
-export default function({items}) {
+export default function SoftSkillsCard({items}) {
     return (
         <>
           {items.map((item, index) => (

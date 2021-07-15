@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { SKILLS_CONFIG } from '../../components/SkillsCard/SkillsMockData';
 import { Text, Card, SkillsCard, SoftSkillsCard, ExperienceCard, Certification, Achievement } from '../../components';
 import { BIO_MOCK_DATA } from '../../components/Card/MockContent';
-import MOCK_EXPERIENCE_CONFIG from '../../components/ExperienceCard/ExperienceCard.config';
-import CERTIFICATIONS_CONFIG from '../../components/Certification/Certification.config';
-import ACHIEVEMENTS_CONFIG from '../../components/Achievement/Achievement.config';
+import {
+  ACHIEVEMENTS_CONFIG,
+  CERTIFICATIONS_CONFIG,
+  MOCK_EXPERIENCE_CONFIG,
+  SKILLS_CONFIG,
+} from '../../components/config/config.model';
 
 const SoftSkillsConfig = require('../../components/SkillsCard/SoftSkills.json');
 
