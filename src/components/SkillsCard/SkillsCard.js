@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({ items }) => (
+export default SkillsCard = ({ items }) => (
   <>
     {items.map((item) => (
       <Card key={item.skill.trim().toLowerCase()} style={styles.card}>

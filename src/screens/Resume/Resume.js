@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { SKILLS_CONFIG } from '../../components/SkillsCard/SkillsMockData';
-import { Text, Card, SkillsCard, SoftSkillsCard, ExperienceCard } from '../../components';
+import { Text, Card, SkillsCard, SoftSkillsCard, ExperienceCard, Certification, Achievement } from '../../components';
 import { BIO_MOCK_DATA } from '../../components/Card/MockContent';
-import MOCK_EXPERIENCE_CONFIG from '../../components/ExperienceCard/ExperienceCard.config';
+import {
+  ACHIEVEMENTS_CONFIG,
+  CERTIFICATIONS_CONFIG,
+  MOCK_EXPERIENCE_CONFIG,
+  SKILLS_CONFIG,
+} from '../../components/config/config.model';
 
 const SoftSkillsConfig = require('../../components/SkillsCard/SoftSkills.json');
 
 // TODO: Create a theme for styles
 
 const styles = StyleSheet.create({
+  resumeContainer: {
+    paddingBottom: 30,
+  },
   titleSection: {
     marginTop: 20,
     marginBottom: 30,
@@ -73,11 +80,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  certification_section: {
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  achievements_section: {
+    marginTop: 30, 
+    marginBottom: 20,
+  }
 });
 
 export default function Resume() {
   return (
-    <View>
+    <View style={styles.resumeContainer}>
       <View name="About Section">
         <View style={styles.titleSection}>
           <Text variant="h1">About</Text>
@@ -151,6 +166,25 @@ export default function Resume() {
               );
             })}
           </View>
+        </View>
+
+       
+      </View>
+       
+       {/* Certifications Section */}
+       <View name="Certifications Section">
+          <View style={styles.certification_section}>
+            <Text variant="h1">Certification</Text>
+          </View>
+          {CERTIFICATIONS_CONFIG.map( (item, index) => <Certification key={index} item={item} /> )}
+       </View>
+
+      {/* Achievements Section */}
+
+      <View name="Achievements Section">
+        <View style={styles.achievements_section}>
+          <Text variant="h1">Achievements</Text>
+          {ACHIEVEMENTS_CONFIG.map((item, index) => <Achievement key={index} item={item} />)}
         </View>
       </View>
     </View>
