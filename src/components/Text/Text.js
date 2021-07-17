@@ -4,13 +4,13 @@ import { Text as Font, StyleSheet } from 'react-native';
 function getStylesFromVariant(variant) {
   switch (variant) {
     case 'h1': {
-      return { fontSize: 24, fontFamily: 'Quicksand_500' };
+      return { fontSize: 18, fontFamily: 'Quicksand_700' };
     }
     case 'h2': {
-      return { fontSize: 19, fontFamily: 'Quicksand_700' };
+      return { fontSize: 12, fontFamily: 'Quicksand_700' };
     }
     case 'h3': {
-      break;
+      return { fontSize: 11, fontFamily: 'Quicksand_600' };
     }
     case 'h4': {
       break;
@@ -34,19 +34,19 @@ function getStylesFromVariant(variant) {
       break;
     }
     case 'caption': {
-      return { fontSize: 14, fontFamily: 'Quicksand_300' };
+      return { fontSize: 12, fontFamily: 'Quicksand_300' };
     }
     case 'button': {
-      break;
+      return { fontSize: 12, fontFamily: 'Quicksand_600', color: '#1CB9FE' };
     }
     default: {
-      return { fontSize: 12, fontFamily: 'Quicksand_400' };
+      return { fontSize: 11, fontFamily: 'Quicksand_400' };
     }
   }
 }
 
-function getColorsFromTheme(colors) {
-  return { ...colors };
+function getColorsFromTheme(color) {
+  if (color) return { color };
 }
 
 export default function Text({ variant, color, children, style, ...rest }) {

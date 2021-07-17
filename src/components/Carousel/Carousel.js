@@ -6,8 +6,9 @@ import { PortalContext } from '../Portal';
 
 const styles = StyleSheet.create({
   button: {
-    paddingLeft: 35,
-    paddingRight: 35,
+    paddingHorizontal: 35,
+    paddingVertical: 10,
+    backgroundColor: 'red',
   },
 });
 
